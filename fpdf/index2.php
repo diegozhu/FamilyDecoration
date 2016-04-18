@@ -77,6 +77,7 @@ foreach($budgetItems as $bItem){
 	$align = array('C','L','C','C','C','C','C','C','C','C','C','C','C','L');
 	if(in_array($bItem['itemCode'],array('N','O','P','Q','R','S'))){
 		$data[3]= '';
+		$data[13]= '';
 		$fontSizes = array_fill(0,14,$NOPQRSTFontSize);
 		$fontStyles = $NOPQRSTFontStyles;
 	}
