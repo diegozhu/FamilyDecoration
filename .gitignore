@@ -1,1 +1,4 @@
-sencha.cfg
+sencha.cfgbuild
+build
+.DS_Store
+*/.DS_Store
