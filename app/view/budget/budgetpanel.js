@@ -6,7 +6,8 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 	layout: 'vbox',
 	requires: ['Ext.form.FieldContainer', 'FamilyDecoration.store.BudgetItem', 'FamilyDecoration.view.budget.EditHeader',
 			   'FamilyDecoration.view.budget.AddBasicItem', 'FamilyDecoration.view.budget.AddExistedItem',
-			   'FamilyDecoration.view.budget.HistoryBudget', 'Ext.slider.Single', 'FamilyDecoration.view.budget.AddBlankItem'],
+			   'FamilyDecoration.view.budget.HistoryBudget', 'Ext.slider.Single', 'FamilyDecoration.view.budget.AddBlankItem',
+			   'FamilyDecoration.view.budget.BulkDeleteSmallItem'],
 
 	title: '预算面板',
 	header: false,
@@ -39,20 +40,24 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 	initBtn: function (rec){
 		var panel = this,
 			addNewBtn = panel.down('[name="button-addNewItem"]'),
+			insertNewBtn = panel.down('[name="button-insertNewItem"]'),
 			addSmallBtnCombo = panel.down('[name="button-addSmallItemCombo"]'),
 			addSmallBtn = panel.down('[name="button-addSmallItemToBigItem"]'),
 			addBlankBtn = panel.down('[name="button-addBlankItemToBigItem"]'),
 			delItemBtn = panel.down('[name="button-deleteItem"]'),
 			discountBtn = panel.down('[name="button-priceAdjust"]'),
+			bulkdeleteBtn = panel.down('[name="button-bulkDeleteSmallItem"]'),
 			editBlankItemBtn = panel.down('[name="button-editBlankItem"]'),
 			calculateBtn = panel.down('[name="button-calculate"]'),
 			editSmallItemNameBtn = panel.down('[name="button-editSmallItemName"]');
 		addNewBtn.isHidden() && addNewBtn.show();
+		insertNewBtn.isHidden() && insertNewBtn.show();
 		addSmallBtnCombo.isHidden() && addSmallBtnCombo.show();
 		addSmallBtn.isHidden() && addSmallBtn.show();
 		addBlankBtn.isHidden() && addBlankBtn.show();
 		delItemBtn.isHidden() && delItemBtn.show();
 		discountBtn.isHidden() && discountBtn.show();
+		bulkdeleteBtn.isHidden() && bulkdeleteBtn.show();
 		editSmallItemNameBtn.isHidden() && editSmallItemNameBtn.show();
 		editBlankItemBtn.isHidden() && editBlankItemBtn.show();
 		!panel.isSynchronousCalculation && calculateBtn.isHidden() && calculateBtn.show();
@@ -61,22 +66,28 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
     			addSmallBtn.enable();
     			addBlankBtn.enable();
     			editSmallItemNameBtn.disable();
+				insertNewBtn.enable();
     		}
     		else {
     			if (rec.get('basicSubItemId')) {
+					addBlankBtn.enable();
+					addSmallBtn.enable();
     				editSmallItemNameBtn.enable();
     			}
     			else {
     				editSmallItemNameBtn.disable();
+					addSmallBtn.disable();
+    				addBlankBtn.disable();
     			}
-    			addSmallBtn.disable();
-    			addBlankBtn.disable();
     			if (rec.get('isCustomized') == 'true') {
+					addBlankBtn.enable();
+					addSmallBtn.enable();
     				editBlankItemBtn.enable();
     			}
     			else {
     				editBlankItemBtn.disable();
     			}
+				insertNewBtn.disable();
     		}
     		delItemBtn.setDisabled(!rec.get('isEditable'));
 		}
@@ -96,11 +107,13 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 			projectOrBusinessNameField = cmp.down('[name="displayfield-projectOrBusinessName"]'),
 			budgetNameField = cmp.down('[name="displayfield-budgetName"]'),
 			addNewBtn = cmp.down('[name="button-addNewItem"]'),
+			insertNewBtn = cmp.down('[name="button-insertNewItem"]'),
 			addSmallBtnCombo = cmp.down('[name="button-addSmallItemCombo"]'),
 			addSmallBtn = cmp.down('[name="button-addSmallItemToBigItem"]'),
 			addBlankBtn = cmp.down('[name="button-addBlankItemToBigItem"]'),
 			delItemBtn = cmp.down('[name="button-deleteItem"]'),
 			discountBtn = cmp.down('[name="button-priceAdjust"]'),
+			bulkdeleteBtn = cmp.down('[name="button-bulkDeleteSmallItem"]'),
 			editBlankItemBtn = cmp.down('[name="button-editBlankItem"]'),
 			calculateBtn = cmp.down('[name="button-calculate"]'),
 			editSmallItemNameBtn = cmp.down('[name="button-editSmallItemName"]');
@@ -110,11 +123,13 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 		projectOrBusinessNameField.setValue('');
 		budgetNameField.setValue('');
 		addNewBtn.hide();
+		insertNewBtn.hide();
 		addSmallBtn.hide();
 		addBlankBtn.hide();
 		addSmallBtnCombo.hide();
 		delItemBtn.hide();
 		discountBtn.hide();
+		bulkdeleteBtn.hide();
 		editBlankItemBtn.hide();
 		editSmallItemNameBtn.hide();
 		!cmp.isSynchronousCalculation && calculateBtn.hide();
@@ -137,9 +152,36 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 	},
 
 	initComponent: function (){
-		var me = this;
+		var me = this,
+			viewMode = 'classic';
 
 		me.tbar = [
+			{
+				text: '切换模式',
+				tooltip: '精简与原始预算界面切换',
+				icon: './resources/img/switch_convolution.png',
+				name: 'button-switchMode',
+				handler: function (){
+					var grid = me.getComponent('gridpanel-budgetContent'),
+						colMgm = grid.getColumnManager(),
+						columns = colMgm.getColumns(),
+						visibleColIndex = [1,2,3,4,5];
+					Ext.each(columns, function (col, index, self){
+						if (viewMode === 'classic') {
+							col.setVisible(visibleColIndex.indexOf(index) !== -1);
+						}
+						else if (viewMode === 'simplified') {
+							col.setVisible(true);
+						}
+					});
+					if (viewMode === 'classic') {
+						viewMode = 'simplified';
+					}
+					else if (viewMode === 'simplified') {
+						viewMode = 'classic';
+					}
+				}
+			},
 			{
 				text: '预算细则',
 				icon: './resources/img/detail.png',
@@ -175,15 +217,34 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 				}
 			},
 			{
-				text: '添加大项',
+				text: '追加大项',
 				icon: './resources/img/add2.png',
-				tooltip: '添加新的基础大项',
+				tooltip: '在预算末尾追加新的基础大项',
 				name: 'button-addNewItem',
 				hidden: true,
 				handler: function (){
 					var win = Ext.create('FamilyDecoration.view.budget.AddBasicItem', {
 						grid: me.getComponent('gridpanel-budgetContent'),
 						budgetId: me.budgetId
+					});
+
+					win.show();
+				}
+			},
+			{
+				text: '插入大项',
+				tooltip: '在当前选择的大项或者小项所属的大项前面插入大项',
+				name: 'button-insertNewItem',
+				icon: './resources/img/insert.png',
+				hidden: true,
+				disabled: true,
+				handler: function (){
+					var grid = me.getComponent('gridpanel-budgetContent'),
+						rec = grid.getSelectionModel().getSelection()[0];
+					var win = Ext.create('FamilyDecoration.view.budget.AddBasicItem', {
+						grid: me.getComponent('gridpanel-budgetContent'),
+						budgetId: me.budgetId,
+						insertBeforeItemCode: rec.get('itemCode')
 					});
 
 					win.show();
@@ -209,6 +270,7 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 								var grid = me.getComponent('gridpanel-budgetContent'),
 									rec = grid.getSelectionModel().getSelection()[0];
 								if (rec) {
+									// 大项
 									if (rec.get('basicItemId') && !rec.get('basicSubItemId')) {
 										var win = Ext.create('FamilyDecoration.view.budget.AddExistedItem', {
 											grid: me.getComponent('gridpanel-budgetContent'),
@@ -218,8 +280,25 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 
 										win.show();
 									}
-									else {
-										showMsg('选择项不是大项！');
+									// 小项
+									else if (!rec.get('basicItemId') && rec.get('basicSubItemId')) {
+										var win = Ext.create('FamilyDecoration.view.budget.AddExistedItem', {
+											grid: me.getComponent('gridpanel-budgetContent'),
+											budgetId: me.budgetId,
+											smallItem: rec
+										});
+
+										win.show();
+									}
+									// 空白项
+									else if (rec.get('isCustomized')) {
+										var win = Ext.create('FamilyDecoration.view.budget.AddExistedItem', {
+											grid: me.getComponent('gridpanel-budgetContent'),
+											budgetId: me.budgetId,
+											smallItem: rec
+										});
+
+										win.show();
 									}
 								}
 								else {
@@ -247,8 +326,25 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 
 										win.show();
 									}
-									else {
-										showMsg('选择项不是大项！');
+									// 小项
+									else if (!rec.get('basicItemId') && rec.get('basicSubItemId')) {
+										var win = Ext.create('FamilyDecoration.view.budget.AddBlankItem', {
+											grid: grid,
+											budgetId: me.budgetId,
+											smallItem: rec
+										});
+
+										win.show();
+									}
+									// 空白项
+									else if (rec.get('isCustomized')) {
+										var win = Ext.create('FamilyDecoration.view.budget.AddBlankItem', {
+											grid: grid,
+											budgetId: me.budgetId,
+											smallItem: rec
+										});
+
+										win.show();
 									}
 								}
 								else {
@@ -480,6 +576,21 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 						showMsg('请选择要编辑的空白项！');
 					}
 				}
+			},
+			{
+				text: '批量删除',
+				tooltip: '自定义删除预算条目，只删除对应大项下面的小项，不删除大项。如要删除大项，请选择删除按钮。',
+				icon: './resources/img/delete1.png',
+				hidden: true,
+				name: 'button-bulkDeleteSmallItem',
+				handler: function (){
+					var grid = me.getComponent('gridpanel-budgetContent');
+					var win = Ext.create('FamilyDecoration.view.budget.BulkDeleteSmallItem', {
+						grid: grid,
+						budgetId: me.budgetId
+					});
+					win.show();
+				}
 			}
 		];
 
@@ -498,8 +609,13 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 				icon: './resources/img/print.png',
 				handler: function (){
 					if (me.budgetId) {
-						var win = window.open('./fpdf/index2.php?action=view&budgetId=' + me.budgetId,'打印','height=650,width=700,top=10,left=10,toolbar=no,menubar=no,scrollbars=no,resizable=yes,location=no,status=no');
-						win.print();
+						Ext.Msg.confirm('打印确认', '打印简版请点击是<br />打印完整版请点击否', function (btnId) {
+							if(btnId == 'cancel')
+								return ;
+							var url = './fpdf/'+(btnId == 'yes' ? 'index2' : 'index3')+'.php?action=view&budgetId=' + me.budgetId;
+							var win = window.open(url,'打印','height=650,width=700,top=10,left=10,toolbar=no,menubar=no,scrollbars=no,resizable=yes,location=no,status=no');
+							win.print();
+						});
 					}
 					else {
 						showMsg('没有预算！');
@@ -511,8 +627,12 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 				icon: './resources/img/pdf.png',
 				handler: function (){
 					if (me.budgetId) {
-						var exportFrame = document.getElementById('exportFrame');
-						exportFrame.src = './fpdf/index2.php?budgetId=' + me.budgetId;
+						Ext.Msg.confirm('导出预算', '导出简版请点击是<br />导出完整版请点击否', function (btnId) {
+							if(btnId == 'cancel')
+								return ;
+							var exportFrame = document.getElementById('exportFrame');
+							exportFrame.src = './fpdf/'+(btnId == 'yes' ? 'index2' : 'index3')+'.php?budgetId=' + me.budgetId;
+						});
 					}
 					else {
 						showMsg('没有预算！');
@@ -524,7 +644,12 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 				icon: './resources/img/preview.png',
 				handler: function (){
 					if (me.budgetId) {
-						var win = window.open('./fpdf/index2.php?action=view&budgetId=' + me.budgetId,'打印','height=650,width=700,top=10,left=10,toolbar=no,menubar=no,scrollbars=no,resizable=yes,location=no,status=no');
+						Ext.Msg.confirm('预览预算', '预览简版请点击是<br />预览完整版请点击否', function (btnId) {
+							if(btnId == 'cancel')
+								return ;
+							var url = './fpdf/'+(btnId == 'yes' ? 'index2' : 'index3')+'.php?action=view&budgetId=' + me.budgetId
+							var win = window.open(url,'打印','height=650,width=700,top=10,left=10,toolbar=no,menubar=no,scrollbars=no,resizable=yes,location=no,status=no');
+						});
 					}
 					else {
 						showMsg('没有预算！');
@@ -746,31 +871,31 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 			// 特殊项
 			else if ('NOPQRS'.indexOf(rec.get('itemCode')) != -1 && rec.get('itemCode') != '') {
 				switch (colIndex) {
-					case 4:
+					case 5:
 					if ('NS'.indexOf(rec.get('itemCode')) != -1) {
 						val = '';
 					}
 					break;
 					// 主单
-					case 5:
+					case 6:
 					// 辅单
-					case 7:
-					// 辅总
 					case 8:
-					// 人单
+					// 辅总
 					case 9:
-					// 人总
+					// 人单
 					case 10:
-					// 机单
+					// 人总
 					case 11:
-					// 机总
+					// 机单
 					case 12:
-					// 损耗
+					// 机总
 					case 13:
+					// 损耗
+					case 14:
 					// 人成本
-					case 15:
-					// 主成本
 					case 16:
+					// 主成本
+					case 17:
 					val = '';
 					break;
 				}
@@ -780,25 +905,25 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 			else if (!rec.get('basicItemId') && !rec.get('basicSubItemId') && rec.get('itemCode') == '') {
 				switch (colIndex) {
 					// 数量
-					case 4:
-					// 主单
 					case 5:
+					// 主单
+					case 6:
 					// 辅单
-					case 7:
+					case 8:
 					// 人单
-					case 9:
+					case 10:
 					// 机单
-					case 11:
+					case 12:
 					// 损耗
-					case 13:
+					case 14:
 					val = '';
 					break;
 					// 人成本
-					case 15:
+					case 16:
 					val = rec.get('manpowerTotalCost');
 					break;
 					// 主成本
-					case 16:
+					case 17:
 					val = rec.get('mainMaterialTotalCost');
 					break;
 				}
@@ -830,9 +955,11 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 						value: '',
 						hideLabel: true,
 						fieldStyle: {
-							fontFamily: '黑体',
 							fontSize: '24px',
 							lineHeight: '60px'
+						},
+						style: {
+							fontFamily: '黑体'
 						},
 						width: 700
 					}
@@ -873,7 +1000,7 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 			            listeners: {
 			            	beforeedit: function (editor, e) {
 			            		var rec = e.record;
-			            		if (e.field == 'itemAmount') {
+			            		if (e.field == 'itemAmount' || e.field == 'amountSource') {
 									if (rec.get('basicSubItemId') || 'true' == rec.get('isCustomized')) {
 										return true;
 									}
@@ -911,10 +1038,40 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 			            		var rec = e.record,
 			            			field = e.field;
 
-			            		if (field == 'itemAmount') {
+			            		if (field == 'amountSource') {
+			            			var source = rec.get('amountSource'),
+										result;
+			            			try {
+				            			result = eval(source.replace(/（/gi,'(').replace(/）/gi,')').replace(/\[[\S\s]*\]/gi,''));
+			            			} catch (e) {
+			            				showMsg('公式不正确！');
+			            				return ;
+			            			}
 			            			Ext.Ajax.request({
 				            			url: './libs/budget.php?action=editItem',
 				            			method: 'POST',
+				            			params: {
+				            				budgetItemId: rec.getId(),
+				            				itemAmount: result,
+				            				amountSource: source
+				            			},
+				            			callback: function (opts, success, res){
+				            				if (success) {
+				            					var obj = Ext.decode(res.responseText);
+				            					if (obj.status == 'successful') {
+				            						showMsg('编辑成功！');
+				            					}
+				            					else {
+				            						showMsg(obj.errMsg);
+				            					}
+				            				}
+				            			}
+				            		});
+			            		}
+			            		else if (field == 'itemAmount') {
+			            			Ext.Ajax.request({
+				            			url: './libs/budget.php?action=editItem',
+				            			method: 'POST',	
 				            			params: {
 				            				budgetItemId: rec.getId(),
 				            				itemAmount: rec.get('itemAmount')
@@ -965,13 +1122,16 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 				            			var grid = me.getComponent('gridpanel-budgetContent'),
 				            				view = grid.getView(),
 				            				st = grid.getStore(),
-				            				itemCount = st.getCount();
+											itemCount = st.getCount(),
+											rowIndex = st.indexOf(rec);
 				            			grid.getSelectionModel().select(rec);
 				            			view.focusRow(rec, 200);
 				            			if (field == 'itemAmount') {
-			            					var rowIndex = st.indexOf(rec);
-				            				editor.startEditByPosition({row: rowIndex + 1, column: 4});	
-			            				}
+				            				editor.startEditByPosition({row: rowIndex + 1, column: 5});	
+										}
+										else if (field === 'amountSource') {
+											editor.startEditByPosition({row: rowIndex + 1, column: 4});
+										}
 				            		});
 			            		}
 			            		else {
@@ -983,10 +1143,15 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 			            	validateedit: function (editor, e, opts){
 			            		var rec = e.record;
 			            		if (e.field == 'itemAmount') {
-			            			if (isNaN(e.value) || !/^\d+(\.\d+)?$/.test(e.value) ){
+			            			if (isNaN(e.value) || !/^-?\d+(\.\d+)?$/.test(e.value) ){
 				            			return false;
 				            		}
 				            		else if (e.value == e.originalValue) {
+				            			return false;
+				            		}
+			            		}
+			            		else if (e.field == 'amountSource') {
+			            			if (e.value == e.originalValue || (e.value || '').trim() == '') {
 				            			return false;
 				            		}
 			            		}
@@ -1144,6 +1309,19 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 	                	menuDisabled: true
 			        },
 			        {
+			        	text: '计算式',
+			        	flex: 0.5, 
+			        	dataIndex: 'amountSource',
+	                	draggable: false,
+	                	align: 'center',
+	                	editor: me.isForPreview ? null : {
+	                		xtype: 'textfield'
+	                	},
+	                	sortable: false,
+	                	menuDisabled: true,
+	                	renderer: me.columnRenderer
+			        },
+			        {
 			        	text: '数量',
 			        	flex: 0.5, 
 			        	dataIndex: 'itemAmount',
@@ -1152,7 +1330,7 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 	                	editor: me.isForPreview ? null : {
 	                		xtype: 'textfield',
 	                		allowBlank: false,
-	                		maskRe: /[\d\.]/
+	                		maskRe: /[\d\.\-]/
 	                	},
 	                	sortable: false,
 	                	menuDisabled: true,
@@ -1361,19 +1539,19 @@ Ext.define('FamilyDecoration.view.budget.BudgetPanel', {
 									if (val) {
 										switch (cellIndex) {
 											// 主单
-											case 5:
+											case 6:
 											val = val + '<br />' + rec.get('orgMainMaterialPrice');
 											break;
 											// 辅单
-											case 7:
+											case 8:
 											val = val + '<br />' + rec.get('orgAuxiliaryMaterialPrice');
 											break;
 											// 人单
-											case 9:
+											case 10:
 											val = val + '<br />' + rec.get('orgManpowerPrice');
 											break;
 											// 机单
-											case 11:
+											case 12:
 											val = val + '<br />' + rec.get('orgMachineryPrice');
 											break;
 											default:

@@ -4,15 +4,18 @@
 		$receivers = explode(',',$receiver); 
 		$type = isset($data["type"]) ? $data["type"] : NULL;
 		$extraId = isset($data["extraId"]) ? $data["extraId"] : NULL;
+		$showTime = isset($data["showTime"]) ? $data["showTime"] : NULL;
 		global $mysql;
+		$rnd = 0;
 		foreach($receivers as $re){
 			$obj = array(
-				"id"=>date("YmdHis").str_pad(rand(0, 9999), 4, rand(0, 9), STR_PAD_LEFT),
+				"id"=>(date("YmdHis") + $rnd ++).str_pad(rand(0, 9999), 4, rand(0, 9), STR_PAD_LEFT),
 				"content"=>$data["content"],
 				"sender"=>$data["sender"],
 				"receiver"=>$re,
 				"type"=>$type,
-				"extraId"=>$extraId
+				"extraId"=>$extraId,
+				"showTime"=>$showTime
 			);
 			$mysql->DBInsertAsArray('message',$obj);
 		}
@@ -47,16 +50,24 @@
 	}
 	
 	function get($data){
-		$fields = array('id','content','createTime','sender','receiver','type','extraId','isDeleted','isRead','readTme');
+		$fields = array('id','content','createTime','sender','receiver','type','extraId','isDeleted','isRead','readTme','showTime');
 		$tableName = '`message`';
 		global $mysql;
 		$where = " where 1 = 1 ";
 		
-		$filters = array('sender','receiver','type','extraId','isRead','isDeleted','id');
+		$filters = array('sender','receiver','type','extraId','isRead','isDeleted','id','showTime');
 		foreach($filters as $filter){
 			if(isset($data[$filter])){
 				$where .= " and `$filter` = '".$data[$filter]."'";
 			}
+		}
+		$today = date("Y-m-d");
+		$isReminding = isset($data["isReminding"]) ? $data["isReminding"] : false;
+		if ($isReminding) {
+			$where .= " and `showTime` IS NOT NULL and DATE_FORMAT(`showTime`, '%Y-%m-%d') = '$today'";
+		}
+		else {
+			$where .= " and (`showTime` IS NULL or DATE_FORMAT(`showTime`, '%Y-%m-%d') = '$today' ) ";
 		}
 		$arr = $mysql->DBGetSomeRows($tableName, " * ", $where ,"order by `createTime` DESC");
 		$count = 0;

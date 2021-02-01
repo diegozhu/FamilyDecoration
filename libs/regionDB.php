@@ -2,6 +2,7 @@
 	function addRegion($data){
 		$name = $data['name'];
 		$remark = $data['nameRemark'];
+		$openingTime = $data["openingTime"];
 		$regions = getRegionByName($name, isset($data["parentID"]));
 		if(count($regions) != 0){
 			throw new Exception("region with name:$name already exist!");
@@ -9,7 +10,8 @@
 		$obj = array(
 			"id"=>date("YmdHis").str_pad(rand(0, 9999), 4, rand(0, 9), STR_PAD_LEFT),
 			"name"=>$name,
-			"nameRemark"=>$remark
+			"nameRemark"=>$remark,
+			"openingTime"=>$openingTime
 		);
 		if(isset($data['parentID']))
 			$obj['parentID'] = $data['parentID'];
@@ -22,6 +24,38 @@
 		global $mysql;
 		$mysql->DBUpdate('region',array('isDeleted'=>true,'updateTime'=>'now()'),"`id`='?'",array($id));
 		return array('status'=>'successful', 'errMsg' => '');
+	}
+
+	//获取小区列表以及潜在客户数量
+	function getRegionList2($data){
+		$params = array();
+		array_push($params,$data['parentID']);
+		//总数，不管装没装修的
+		$sql = "SELECT	IFNULL(p.num,0) as totalBusinessNumber,	r.* FROM `region` r 
+					LEFT JOIN (select count(*) as num,regionId  from potential_business where isDeleted = 'false' and isTransfered = 'false' {myselfonly} group by regionId)
+				p ON r.id = p.regionId where r.parentID = '?'";
+		//潜在业务数，未装修的
+		$sql2 = "SELECT	IFNULL(p.num,0) as potentialBusinessNumber,	r.id FROM `region` r 
+					LEFT JOIN (select count(*) as num,regionId  from potential_business where isDeleted = 'false' and isTransfered = 'false' {myselfonly} and (isDecorated is null or isDecorated = 'false') group by regionId)
+				p ON r.id = p.regionId where r.parentID = '?' ";
+		if(isset($data['myselfOnly']) && ($data['myselfOnly'] === 'true' || $data['myselfOnly'] === true)){
+			$sql = str_replace("{myselfonly}", " and salesmanName = '".$_SESSION['name']."'", $sql);
+			$sql2 = str_replace("{myselfonly}", " and salesmanName = '".$_SESSION['name']."'", $sql2);
+		}else{
+			$sql = str_replace("{myselfonly}", '', $sql);
+			$sql2 = str_replace("{myselfonly}", '', $sql2);
+		}
+		global $mysql;
+		$arr = $mysql->DBGetAsMap($sql.' order by totalBusinessNumber desc ',$params);
+		$arr2 = $mysql->DBGetAsMap($sql2.' order by r.createTime asc ',$params);
+		$pB = array();
+		foreach($arr2 as &$item){
+			$pB[$item['id']] = $item['potentialBusinessNumber'];
+		}
+		foreach($arr as &$item){
+			$item['potentialBusinessNumber'] = isset($pB[$item['id']]) ? $pB[$item['id']] : 0 ;
+		}
+		return $arr;
 	}
 
 	function getRegionList($data){
@@ -39,31 +73,7 @@
 			$sql = $sql." and r.parentID = -1 ";
 		}
 		global $mysql;
-		$arr = $mysql->DBGetAsMap($sql.' order by createTime desc ',$params);
-		// 获取小区的业务
-		/*if(isset($data['parentID']) && $data['parentID'] != '-1' && $data['parentID'] != -1){
-			for ($i = 0; $i < count($arr); $i++) {
-				$arr[$i]["business"] = getBusinessByRegion($arr[$i]["id"], 'false', 'false');
-			}			
-		}*/
-		for ($i = 0; $i < count($arr); $i++) {
-			if (-1 == $arr[$i]["parentID"]) {
-				$arr[$i]["regionListInfo"] = getRegionList(array("parentID"=>$arr[$i]["id"]));
-			}
-			else {
-				$arr[$i]["businessListInfo"] = getAllPotentialBusiness(array("regionID"=>$arr[$i]["id"]));
-			}
-		}
-		usort($arr, function ($a, $b) {
-			$result = false;
-			if (isset($a["regionListInfo"])) {
-				$result = count($a["regionListInfo"]) <= count($b["regionListInfo"]);
-			}
-			else if (isset($a["businessListInfo"])) {
-				$result = count($a["businessListInfo"]) <= count($b["businessListInfo"]);
-			}
-			return $result;
-		});
+		$arr = $mysql->DBGetAsMap($sql.' order by createTime asc ',$params);
 		return $arr;
 	}
 	
@@ -86,6 +96,8 @@
 			$obj['nameRemark'] = $data['nameRemark'];
 		if(isset($data['name']))
 			$obj['name'] = $data['name'];
+		if(isset($data['openingTime']))
+			$obj['openingTime'] = $data['openingTime'];
 		$mysql->DBUpdate('region',$obj,"`id` = '?' ",array($data["id"]));
 		return array('status'=>'successful', 'errMsg' => 'edit business ok');
 	}

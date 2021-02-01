@@ -22,8 +22,8 @@
 
 	function delProject ($projectId){
 		global $mysql;
-		$mysql->DBUpdate("project",array('isDeleted'=>true),"`projectId` = '?'",array($projectId));
-		$mysql->DBUpdate("budget",array('isDeleted'=>true),"`projectId` = '?'",array($projectId));
+		$mysql->DBUpdate("project",array('isDeleted'=>true,'updateTime' => 'now()'),"`projectId` = '?'",array($projectId));
+		$mysql->DBUpdate("budget",array('isDeleted'=>true, 'lastUpdateTime' => 'now()'),"`projectId` = '?'",array($projectId));
 		//TODO 删除plan和progress,budgetItem，其实不删也可以
 		return array('status'=>'successful', 'errMsg' => '');
 	}
@@ -66,18 +66,46 @@
 	}
 	function getProjectCaptains ($captainName){
 		global $mysql;
+		$needRdyck1BillCount = isset($_REQUEST["needRdyck1BillCount"]) ? $_REQUEST["needRdyck1BillCount"] : "";
+		$needMaterialOrderCount = isset($_REQUEST["needMaterialOrderCount"]) ? $_REQUEST["needMaterialOrderCount"] : "";
+		$statementBillSql = "select count(*) as num from `statement_bill` b left join `project` p on b.projectId = p.projectId where p.captainName = '?' and b.status = 'rdyck1' and b.isDeleted = 'false' and p.isDeleted = 'false' and p.isFrozen = 0 ";
+		$materialOrderSql = "select count(*) as num from `supplier_order` sp left join `project` p on sp.projectId = p.projectId where p.captainName = '?' and sp.status = 'rdyck' and sp.isDeleted = 'false' and p.isDeleted = 'false' and p.isFrozen = 0";
 		if ($captainName != "") {
-			return $mysql->DBGetAsMap("select distinct `captainName`, `captain` from project where `isDeleted` = 'false' and `captainName` = '$captainName' ");
+			$res = $mysql->DBGetAsMap("select distinct `captainName`, `captain` from project where `isDeleted` = 'false' and `captainName` = '$captainName' ");
 		}
 		else {
-			return $mysql->DBGetAsMap("select distinct `captainName`, `captain` from project where `isDeleted` = 'false' and `captainName` is not NULL");
+			$res = $mysql->DBGetAsMap("select distinct `captainName`, `captain` from project where `isDeleted` = 'false' and `captainName` is not NULL");
 		}
+		if ($needRdyck1BillCount == 'true') {
+			for ($i=0; $i < count($res); $i++) { 
+				$item = $res[$i];
+				$rdyck1BillCountForCaptain = $mysql->DBGetAsMap($statementBillSql, $item["captainName"]);
+				$rdyck1BillCountForCaptain = $rdyck1BillCountForCaptain[0]["num"];
+				$res[$i]["rdyck1BillCountForCaptain"] = $rdyck1BillCountForCaptain;
+			}
+		}
+		else if ($needMaterialOrderCount == 'true') {
+			for ($i=0; $i < count($res); $i++) { 
+				$item = $res[$i];
+				$rdyck1MaterialOrderCountForCaptain = $mysql->DBGetAsMap($materialOrderSql, $item["captainName"]);
+				$rdyck1MaterialOrderCountForCaptain = $rdyck1MaterialOrderCountForCaptain[0]["num"];
+				$res[$i]["rdyck1MaterialOrderCountForCaptain"] = $rdyck1MaterialOrderCountForCaptain;
+			}
+		}
+		return $res;
 	}
 
-	function getVisitorProjectsByCaptain($visitorName, $captainName){
+	function getVisitorProjectsByCaptain($visitorName, $captainName, $settled){
 		global $mysql;
 		$sql = "select * from user left join project p on p.projectId = user.projectId where user.name = '?' and p.captainName = '?' and p.projectId is not null and p.isDeleted = 'false' ";
-		return $mysql->DBGetAsMap($sql,$visitorName,$captainName);
+		$params = array();
+		array_push($params, $visitorName);
+		array_push($params, $captainName);
+		if ($settled >= 0 ) {
+			$sql = $sql." and settled = ? ";
+			array_push($params, $settled);
+		}
+		return $mysql->DBGetAsMap($sql,$params);
 	}
 
 	function getProjectMonths ($year){
@@ -111,13 +139,19 @@
 	function editProject (array $pro){
 		global $mysql;
 		// fields that could be edit.
-		$obj = array();
+		$obj = array('updateTime' => 'now()');
 		$fields = array('businessId','projectName','period','captain','captainName','supervisor','supervisorName','hasChart','createTime', 'salesman','salesmanName', 'designer','designerName','projectTime','budgetId','isFrozen');
 
 		foreach($fields as $key){
 			if(isset($pro[$key]))
 				$obj[$key] = $pro[$key];
-		}	
+		}
+		if (isset($obj['isFrozen']) && $obj['isFrozen'] == '1') {
+			BaseSvc::getSvc('ProjectProgressAudit')->checkAuditPassed("0001", $pro["projectId"]);
+			BaseSvc::getSvc('ProjectProgressAudit')->checkAuditPassed("0002", $pro["projectId"]);
+			BaseSvc::getSvc('ProjectProgressAudit')->checkAuditPassed("0003", $pro["projectId"]);
+			BaseSvc::getSvc('ProjectProgressAudit')->checkAuditPassed("0004", $pro["projectId"]);
+		}
 		$mysql->DBUpdate("project",$obj,"`projectId` = '?'",array($pro['projectId']));
 		return array('status'=>'successful', 'errMsg' => '');
 	}
@@ -128,7 +162,7 @@
 		$setValue = " isDeleted = isDeleted ";
 		// fields that could be edit.
 		$fields = array('businessId','projectName','period','captain','captainName','supervisor','supervisorName','hasChart','createTime', 'salesman','salesmanName', 'designer','designerName','projectTime','budgetId','isFrozen');
-		$obj = array();
+		$obj = array('updateTime' => 'now()');
 		foreach($fields as $key)
 			if(isset($pro[$key]))
 				$obj[$key]=$pro[$key];
@@ -136,18 +170,65 @@
 		return array('status'=>'successful', 'errMsg' => '');
 	}
 
-	function getProjectsByCaptainName ($captainName){
+	function getProjectsByCaptainName ($captainName, $settled){
 		global $mysql;
 		$userName = isset($_REQUEST["userName"]) ? $_REQUEST["userName"] : "";
-		if ($userName == "") {
-			$projects = $mysql->DBGetAsMap("select * from project where `isDeleted` = 'false' and `captainName` = '?' and `isFrozen` = 'false' ORDER BY `projectTime` ASC ", $captainName);
+		$needStatementBillCount = isset($_REQUEST["needStatementBillCount"]) ? $_REQUEST["needStatementBillCount"] : "";
+		$needMaterialOrderCount = isset($_REQUEST["needMaterialOrderCount"]) ? $_REQUEST["needMaterialOrderCount"] : "";
+		$includeFrozen = $_REQUEST["includeFrozen"];
+		$sql = "select * from project where `isDeleted` = 'false' and `captainName` = '?' ";
+		$orderby = " ORDER BY `projectTime` ASC ";
+		$params = array();
+		array_push($params, $captainName);
+		if ($includeFrozen != "true") {
+			$sql = $sql." and isFrozen = '0' ";
 		}
-		else {
-			$projects = $mysql->DBGetAsMap("select * from project where `isDeleted` = 'false' and `captainName` = '?' and `isFrozen` = 'false' and (`salesmanName` = '?' || `designerName` = '?') ORDER BY `projectTime` ASC ", $captainName, $userName, $userName);
+		if ($userName != "") {
+			$sql = $sql." and (`salesmanName` = '?' || `designerName` = '?') ";
+			array_push($params, $userName);
+			array_push($params, $userName);
 		}
+		if ($settled >= 0 ) {
+			$sql = $sql." and settled = ? ";
+			array_push($params, $settled);
+		}
+		$projects = $mysql->DBGetAsMap($sql.$orderby, $params);
 		$sqlBudget = "select * from budget where projectId = '?' and isDeleted = 'false'";
 		foreach($projects as $key=>$project) {
-			$projects[$key]["budgets"] = $mysql->DBGetAsMap($sqlBudget,$project['projectId']);
+			$projectId = $project['projectId'];
+			$projects[$key]["budgets"] = $mysql->DBGetAsMap($sqlBudget, $projectId);
+			if ($needStatementBillCount == 'true') {
+				$res = $mysql->DBGetAsKeyValueList("select count(*) as v, status as k from statement_bill where projectId = '?' and isDeleted = 'false' group by status", $projectId);
+				$projects[$key]["rdyck1BillCount"] = isset($res['rdyck1']) ? $res['rdyck1'] : 0;
+				$projects[$key]["rdyck2BillCount"] = isset($res['rdyck2']) ? $res['rdyck2'] : 0;
+				$projects[$key]["rdyck3BillCount"] = isset($res['rdyck3']) ? $res['rdyck3'] : 0;
+				$projects[$key]["rdyck4BillCount"] = isset($res['rdyck4']) ? $res['rdyck4'] : 0;
+			}
+			if ($needMaterialOrderCount == 'true') {
+				$res = $mysql->DBGetAsKeyValueList("select count(*) as v, status as k from supplier_order where projectId = '?' and isDeleted = 'false' group by status = 'rdyck' ", $projectId);
+				$projects[$key]["rdyck1MaterialOrderCount"] = isset($res['rdyck']) ? $res['rdyck'] : 0;
+				$projects[$key]["rdyck2MaterialOrderCount"] = isset($res['chk']) ? $res['chk'] : 0;
+				$projects[$key]["rdyck3MaterialOrderCount"] = isset($res['checked']) ? $res['checked'] : 0;
+				$projects[$key]["rdyck4MaterialOrderCount"] = isset($res['applied']) ? $res['applied'] : 0;
+			}
+		}
+		return $projects;
+	}
+	
+	// filter project via typing project in search above project tree
+	function filterProjectByProjectName ($projectName, $projectStaff, $userName, $includeFrozen){
+		global $mysql;
+		$sql = "select * from project where `projectName` like '%?%' and `isDeleted` = 'false' ".($includeFrozen == "true" ? "" : " and `isFrozen` = '0' ");
+		if ($projectStaff) {
+			$sql .= " and captainName = '?' ";
+			$projects = $mysql->DBGetAsMap($sql, $projectName, $projectStaff);
+		}
+		else if ($userName) {
+			$sql .= " and (`salesmanName` = '?' || `designerName` = '?') ";
+			$projects = $mysql->DBGetAsMap($sql, $projectName, $userName, $userName);
+		}
+		else {
+			$projects = $mysql->DBGetAsMap($sql, $projectName);
 		}
 		return $projects;
 	}

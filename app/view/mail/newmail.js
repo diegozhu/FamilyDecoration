@@ -44,7 +44,7 @@ Ext.define('FamilyDecoration.view.mail.NewMail', {
 				readOnly: true,
 				fieldLabel: '收件人',
 				anchor: '100% 10%',
-				value: me.forPreview ? me.previewRec.get('mailReceiver') : '',
+				value: me.forPreview ? me.previewRec.get('mailReceiver') : ''
 			}, {
 				xtype: 'hiddenfield',
 				id: 'hiddenfield-receiverAddress',
@@ -158,7 +158,7 @@ Ext.define('FamilyDecoration.view.mail.NewMail', {
 							receiverAddress: val['mailReceiver'],
 							mailSubject: val['mailSubject'],
 							mailContent: val['mailContent'],
-							mailSender: User.getName(),
+							mailSender: User.getRealName(),
 							senderAddress: User.getEmail()
 						};
 

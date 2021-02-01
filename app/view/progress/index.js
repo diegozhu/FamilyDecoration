@@ -11,6 +11,7 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 	// autoScroll: true,
 	layout: 'border',
 	projectId: undefined,
+	loadAll: true, // if load all projects or not. default true.
 
 	initComponent: function (){
 		var me = this;
@@ -27,6 +28,7 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 			items: [{
 				xtype: 'progress-projectlistbycaptain',
 				projectId: me.projectId,
+				loadAll: me.loadAll,
 				searchFilter: true,
 				title: '工程项目名称',
 				id: 'treepanel-projectName',
@@ -91,7 +93,7 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 					icon: './resources/img/add5.png',
 					handler: function (){
 						var win = Ext.create('FamilyDecoration.view.progress.EditProject', {
-
+							proPanel: Ext.getCmp('treepanel-projectName')
 						});
 						win.show();
 					}
@@ -106,7 +108,8 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 						var panel = Ext.getCmp('treepanel-projectName');
 						var pro = panel.getSelectionModel().getSelection()[0];
 						var win = Ext.create('FamilyDecoration.view.progress.EditProject', {
-							project: pro
+							project: pro,
+							proPanel: Ext.getCmp('treepanel-projectName')
 						});
 						win.show();
 					}
@@ -135,7 +138,7 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 											var obj = Ext.JSON.decode(res.responseText);
 											if (obj.status == 'successful') {
 												panel.getStore().load({
-													node: pro.parentNode.parentNode
+													node: pro.parentNode
 												});
 												panel.getSelectionModel().deselectAll();
 												Ext.Ajax.request({
@@ -173,9 +176,6 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 				width: '100%',
 				autoScroll: true,
 				listeners: {
-					itemclick: function (view, rec){
-						return rec.get('projectName') ? true : false;
-					},
 					selectionchange: function (selModel, sels, opts){
 						var rec = sels[0],
 							delProjectBtn = Ext.getCmp('button-deleteProject'),
@@ -232,13 +232,12 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 					}
 				}
 			}, {
-				hidden: User.isGeneral() ? true : false,
 				xtype: 'progress-projectlist',
 				title: '已封存项目',
 				id: 'treepanel-frozenProject',
 				name: 'treepanel-frozenProject',
 				loadAll: false,
-				hidden: me.projectId ? true : false,
+				hidden: me.projectId || User.isGeneral() ? true : false,
 				tools: [{
 					type: 'gear',
 					disabled: true,
@@ -527,6 +526,7 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 					var proPanel = Ext.getCmp('treepanel-projectName'),
 						project = proPanel.getSelectionModel().getSelection()[0];
 					var win = Ext.create('FamilyDecoration.view.progress.EditProgress', {
+						progressGrid: Ext.getCmp('gridpanel-projectProgress'),
 						project: project
 					});
 					win.show();
@@ -545,7 +545,8 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 						progress = gridPanel.getSelectionModel().getSelection()[0];
 					var win = Ext.create('FamilyDecoration.view.progress.EditProgress', {
 						project: project,
-						progress: progress
+						progress: progress,
+						progressGrid: Ext.getCmp('gridpanel-projectProgress')
 					});
 					win.show();
 				}
@@ -613,7 +614,9 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 							pid: pid
 						};
 
-						changeMainCt('chart-index');
+						changeMainCt('chart-index', {
+							loadAll: false
+						});
 					}
 					else {
 						showMsg('该工程没有图库！');
@@ -726,7 +729,9 @@ Ext.define('FamilyDecoration.view.progress.Index', {
 							pid: pid
 						};
 
-						changeMainCt('plan-index');
+						changeMainCt('plan-index', {
+							loadAll: false
+						});
 					}
 					else {
 						showMsg('请选择工程！');

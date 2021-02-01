@@ -375,31 +375,26 @@
         "fields": "id:int:null,name:auto:null,email:auto:null"
       }
     },
-    ".sencha/app/development.properties": {
-      "source": "development.properties.merge",
-      "version": "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6",
+    "app/controller/app/controller/businesstotransfer.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
       "parameters": {
-        "appControllers": "",
-        "appModels": "",
         "appName": "FamilyDecoration",
-        "appStores": "",
-        "appViews": "",
-        "controllerFileName": "Main",
-        "controllerName": "Main",
+        "controllerName": "app/controller/businesstotransfer",
+        "name": "app/controller/businesstotransfer",
         "controllerNamespace": "FamilyDecoration.controller",
-        "frameworkKey": "ext",
-        "frameworkName": "ext",
-        "frameworkPath": "ext",
-        "library": "all",
-        "modelNamespace": "FamilyDecoration.model",
-        "name": "FamilyDecoration",
-        "packagesRelPath": "ext/packages",
-        "senchadir": ".sencha",
-        "themeName": "default",
-        "uniqueId": "f7307466-de9d-4aeb-9a52-b736aa8a0d2b",
-        "viewFileName": "Main",
-        "viewName": "Main",
-        "viewNamespace": "FamilyDecoration.view"
+        "controllerFileName": "app/controller/businesstotransfer"
+      }
+    },
+    "app/controller/businesstotransfer.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
+      "parameters": {
+        "appName": "FamilyDecoration",
+        "controllerName": "businesstotransfer",
+        "name": "businesstotransfer",
+        "controllerNamespace": "FamilyDecoration.controller",
+        "controllerFileName": "businesstotransfer"
       }
     }
   }

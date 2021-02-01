@@ -4,7 +4,7 @@
 
     autoLoad: true,
     root: {
-        expanded: true,
+        expanded: false,
         children: [
             { 
                 name: "公告栏信息",
@@ -14,11 +14,17 @@
             },
             {
                 name: "业务列表",
-                expanded: true,
+                expanded: false,
                 cmp: 'business-parent',
                 leaf: false,
                 icon: 'resources/img/business.png',
                 children: [
+                    {
+                        name: '电销列表',
+                        cmp: 'telemarket-index',
+                        leaf: true,
+                        icon: 'resources/img/telemarket.png'
+                    },
                     {
                         name: '我的业务',
                         cmp: 'mybusiness-index',
@@ -54,12 +60,38 @@
                         cmp: 'deadbusiness-index',
                         leaf: true,
                         icon: 'resources/img/trashbin1.png'
+                    },
+                    {
+                        name: '等待业务',
+                        cmp: 'businesstotransfer-index',
+                        leaf: true,
+                        icon: 'resources/img/wait.png'
+                    }
+                ]
+            },
+            {
+                name: '决策',
+                expanded: false,
+                icon: 'resources/img/strategy.png',
+                cmp: 'strategy-parent',
+                children: [
+                    {
+                        name: '目标制定',
+                        cmp: 'targetsetting-index',
+                        leaf: true,
+                        icon: 'resources/img/target-setting.png'
+                    },
+                    {
+                        name: '业务汇总',
+                        cmp: 'businessaggregation-index',
+                        leaf: true,
+                        icon: 'resources/img/business_aggregation.png'
                     }
                 ]
             },
             {
                 name: "工作日志", 
-                expanded: true, 
+                expanded: false, 
                 icon: 'resources/img/blog-parent.png',
                 cmp: 'logbook-parent',
                 children: [
@@ -86,24 +118,12 @@
                         cmp: 'taskassign-index',
                         leaf: true,
                         icon: 'resources/img/checktask.png'
-                    },
-                    {
-                        name: '请假',
-                        cmp: 'leave-index',
-                        leaf: true,
-                        icon: 'resources/img/leave.png'
-                    },
-                    {
-                        name: '请假批示',
-                        cmp: 'leaveapproval-index',
-                        leaf: true,
-                        icon: 'resources/img/approve.png'
                     }
                 ] 
             },
             {
                 name: "预算", 
-                expanded: true, 
+                expanded: false, 
                 icon: 'resources/img/budget-parent.png',
                 cmp: 'budget-parent',
                 children: [
@@ -135,7 +155,7 @@
             },
             {
                 name: "工程情况", 
-                expanded: true, 
+                expanded: false, 
                 cmp: 'project-parent',
                 icon: 'resources/img/project-parent.png',
                 children: [
@@ -146,22 +166,126 @@
                         icon: 'resources/img/progress.png'
                     },
                     {
+                        name: "工程进度 <font color='green'><strong>新</strong></font>",
+                        cmp: 'projectprogress-index',
+                        leaf: true,
+                        icon: 'resources/img/projectprogress.png'
+                    },
+                    {
                         name: "计划生成",
                         cmp: 'plan-index',
                         leaf: true,
                         icon: 'resources/img/plan.png'
                     },
                     {
+                        name: "计划生成 <font color='green'><strong>新</strong></font>",
+                        cmp: 'planmaking-index',
+                        leaf: true,
+                        icon: 'resources/img/plan_new.png'
+                    },
+                    {
                         name: '主材订购单',
                         cmp: 'mainmaterial-index',
                         leaf: true,
                         icon: 'resources/img/order.png'
+                    },
+                    {
+                        name: '人工对账',
+                        cmp: 'manuallycheckbill-index',
+                        leaf: true,
+                        icon: 'resources/img/bill.png'
+                    },
+                    {
+                        name: '材料申购',
+                        cmp: 'materialrequest-index',
+                        leaf: true,
+                        icon: 'resources/img/material_request.png'
+                    },
+                    {
+                        name: '工程目录',
+                        cmp: 'projectcategory-index',
+                        leaf: true,
+                        icon: 'resources/img/projectcategory.png'
+                    },
+                    {
+                        name: '计划用工',
+                        cmp: 'planlabor-index',
+                        leaf: true,
+                        icon: 'resources/img/planlabor.png'
                     }
                 ] 
             },
             {
+                name: '财务模块',
+                expanded: false,
+                cmp: 'finance-parent',
+                icon: 'resources/img/finance-parent.png',
+                children: [
+                    {
+                        name: '工程财务管理',
+                        cmp: 'projectfinancemanagement-index',
+                        leaf: true,
+                        icon: 'resources/img/project_finance_management.png'
+                    },
+                    {
+                        name: '总财务管理',
+                        cmp: 'totalpropertymanagement-index',
+                        leaf: true,
+                        icon: 'resources/img/total_property_management.png'
+                    },
+                    {
+                        name: '合同管理',
+                        cmp: 'contractmanagement-index',
+                        leaf: true,
+                        icon: 'resources/img/contract_management.png'
+                    },
+                    {
+                        name: '对账项目编辑',
+                        cmp: 'checkbillitem-index',
+                        leaf: true,
+                        icon: 'resources/img/bill-edit.png'
+                    },
+                    {
+                        name: '对账审核',
+                        cmp: 'billaudit-index',
+                        leaf: true,
+                        icon: 'resources/img/audit.png'
+                    },
+                    {
+                        name: '出入账',
+                        cmp: 'entrynexit-index',
+                        leaf: true,
+                        icon: 'resources/img/entrynexit.png'
+                    },
+                    {
+                        name: '报销',
+                        cmp: 'paymentrequest-index',
+                        leaf: true,
+                        icon: 'resources/img/payment_request.png'
+                    },
+                    {
+                        name: '供应商管理',
+                        cmp: 'suppliermanagement-index',
+                        leaf: true,
+                        icon: 'resources/img/supplier_management.png'
+                    },
+                    {
+                        name: '账户管理',
+                        cmp: 'account-index',
+                        leaf: true,
+                        icon: 'resources/img/account_management.png'
+                    },
+                    {
+                        name: '质保金管理',
+                        cmp: 'qualityguaranteedepositmgm-index',
+                        leaf: true,
+                        icon: 'resources/img/quality_guarantee_deposit.png'
+                    }
+                ]
+            },
+            {
                 name: "应用设置", 
-                expanded: true,
+                expanded: false,
                 cmp: 'setting-parent', 
                 icon: 'resources/img/setting-parent.png',
                 children: [
@@ -175,12 +299,12 @@
             },
             {
                 name: '人事管理',
-                expanded: true,
+                expanded: false,
                 cmp: 'personnel-parent',
                 icon: 'resources/img/personnel.png',
                 children: [
                     {
-                        name: "账户管理",
+                        name: "帐号管理",
                         cmp: 'setting-index',
                         leaf: true,
                         icon: 'resources/img/account.png'
@@ -190,6 +314,12 @@
                         cmp: 'personnel-index',
                         leaf: true,
                         icon: 'resources/img/statistics.png'
+                    },
+                    {
+                        name: '员工工资',
+                        cmp: 'staffsalary-index',
+                        leaf: true,
+                        icon: 'resources/img/staff_salary.png'
                     }
                 ]
             },
@@ -211,7 +341,16 @@
                 flag = false;
             }
             else if (rec.get('cmp') == 'bulletin-index') {
-                flag = User.isGeneral() ? false : true;
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+            }
+            else if (rec.get('cmp') == 'strategy-parent') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'targetsetting-index') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'businessaggregation-index') {
+                flag = User.isAdmin() || User.isBusinessManager() || User.isDesignManager() ? true : false;
             }
             else if (rec.get('cmp') == 'logbook-parent') {
                 flag = User.isAdmin() || User.isManager() || User.isDesignStaff() || User.isProjectStaff() || User.isSupervisor() || User.isBusinessStaff() || User.isAdministrationStaff() || User.isPropagandaStaff() || User.isFinanceStaff() || User.isBudgetManager() || User.isBudgetStaff() ? true : false;
@@ -228,35 +367,25 @@
             else if (rec.get('cmp') == 'taskassign-index') {
                 flag = User.isAdmin() || User.isManager() ? true : false;
             }
-            else if (rec.get('cmp') == 'leave-index') {
-                if (DEBUG) {
-                    flag = User.isAdmin() || User.isManager() || User.isDesignStaff() || User.isProjectStaff() || User.isSupervisor() || User.isBusinessStaff() || User.isAdministrationStaff() || User.isPropagandaStaff() || User.isFinanceStaff() ? true : false;
-                }
-                else {
-                    flag = false;
-                }
-            }
-            else if (rec.get('cmp') == 'leaveapproval-index') {
-                if (DEBUG) {
-                    flag = User.isAdmin() || User.isManager() ? true : false;
-                }
-                else {
-                    flag = false;
-                }
-            }
             else if (rec.get('cmp') == 'budget-parent') {
-                flag = User.isAdmin() || User.isDesignManager() || User.isDesignStaff() || User.isBudgetManager() || User.isBudgetStaff() || User.isFinanceManager() || User.isFinanceStaff() ? true : false;
+                flag = User.isAdmin() || User.isDesignManager() || User.isDesignStaff() || User.isBudgetManager() || User.isBudgetStaff() || User.isFinanceManager() ? true : false;
             }
             else if (rec.get('cmp') == 'chart-index') {
-                flag = true;
+                flag = User.isSupplier() ? false : true;
             }
             else if (rec.get('cmp') == 'project-parent') {
-                flag = true;
+                flag = User.isSupplier() ? false : true;
             }
             else if (rec.get('cmp') == 'progress-index') {
-                flag = true;
+                flag = false; // old module. deprecated.
+            }
+            else if (rec.get('cmp') == 'projectcategory-index') {
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
             }
             else if (rec.get('cmp') == 'plan-index') {
+                flag = false; // old module. deprecated.
+            }
+            else if (rec.get('cmp') == 'planmaking-index') {
                 flag = true;
             }
             else if (rec.get('cmp') == 'mainmaterial-index') {
@@ -265,35 +394,42 @@
             else if (rec.get('cmp') == 'setting-parent') {
                 flag = User.isAdmin() || User.isBusinessStaff() || User.isAdministrationManager() ? true : false;
             }
+            else if (rec.get('cmp') == 'msg-index') {
+                flag = User.isAdmin() ? true : false;
+            }
             else if (rec.get('cmp') == 'basicitem-index') {
-                flag =  User.isAdmin() || User.isBudgetManager() || User.isBudgetStaff() ? true : false;
+                flag =  User.isAdmin() || User.isBudgetManager() || User.isBudgetStaff() || User.isFinanceManager() ? true : false;
             }
             else if (rec.get('cmp') == 'personnel-parent') {
-                flag = User.isAdmin() || User.isBusinessStaff() || User.isAdministrationManager() ? true : false;
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
             }
             else if (rec.get('cmp') == 'personnel-index') {
                 flag = User.isAdmin() || User.isAdministrationManager() || User.isAdministrationStaff() ? true : false;
             }
-            else if (rec.get('cmp') == 'setting-index') {
-                flag = User.isAdmin() || User.isBusinessStaff() || User.isAdministrationManager() ? true : false;
-            }
-            else if (rec.get('cmp') == 'msg-index') {
+            else if (rec.get('cmp') == 'staffsalary-index') {
                 flag = User.isAdmin() ? true : false;
             }
+            else if (rec.get('cmp') == 'setting-index') {
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+            }
             else if (rec.get('cmp') == 'mail-index') {
-                flag = User.isGeneral() ? false : true;
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
             }
             else if (rec.get('cmp') == 'budget-index') {
-                flag = User.isAdmin() || User.isDesignManager() || User.isDesignStaff() || User.isBudgetManager() || User.isBudgetStaff() || User.isFinanceManager() || User.isFinanceStaff() ? true : false;
+                flag = User.isAdmin() || User.isDesignManager() || User.isDesignStaff() || User.isBudgetManager() || User.isBudgetStaff() || User.isFinanceManager() ? true : false;
             }
             else if (rec.get('cmp') == 'costanalysis-index') {
-                flag = User.isAdmin() || User.isBudgetManager() ? true : false;
+                flag = User.isAdmin() || User.isBudgetManager() || User.isFinanceManager() ? true : false;
             }
             else if (rec.get('cmp') == 'business-parent') {
-                flag = User.isGeneral() ? false : true;
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+            }
+            else if (rec.get('cmp') == 'telemarket-index') {
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+                // flag = false; // reopen since security checking is lifted.
             }
             else if (rec.get('cmp') == 'mybusiness-index') {
-                flag = User.isGeneral() ? false : true;
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
             }
             else if (rec.get('cmp') == 'checkbusiness-index') {
                 flag = User.isAdmin() || User.isBusinessManager() || User.isAdministrationManager() || User.isDesignManager() || User.isFinanceManager() ? true : false;
@@ -305,7 +441,65 @@
                 flag = User.isAdmin() || User.isDesignManager() || User.isProjectManager() || User.isBudgetManager() || User.isBudgetStaff() || User.isFinanceManager() ? true : false;
             }
             else if (rec.get('cmp') == 'regionmgm-index') {
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+                //flag = false;
+            }
+            else if (rec.get('cmp') == 'businesstotransfer-index') {
+                flag = User.isAdmin() || (User.isManager() && !User.isProjectManager()) ? true : false;
+            }
+            else if (rec.get('cmp') == 'finance-parent') {
                 flag = User.isGeneral() ? false : true;
+            }
+            else if (rec.get('cmp') == 'projectfinancemanagement-index') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'totalpropertymanagement-index') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'contractmanagement-index') {
+                flag = User.isAdmin() || User.isFinanceManager() ? true : false;
+            }
+            else if (rec.get('cmp') == 'manuallycheckbill-index') {
+                flag = User.isAdmin() || User.isFinanceManager() || User.isFinanceAccountant() || User.isProjectManager() || User.isProjectStaff() || User.isBudgetManager() || User.isBudgetStaff() ? true : false;
+            }
+            else if (rec.get('cmp') == 'checkbillitem-index') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'billaudit-index') {
+                flag = User.isAdmin() || User.isFinanceManager() || User.isFinanceAccountant() ? true : false;
+            }
+            else if (rec.get('cmp') == 'entrynexit-index') {
+                flag = User.isAdmin() || User.isFinanceManager() || User.isFinanceCashier() ? true : false;
+            }
+            else if (rec.get('cmp') == 'paymentrequest-index') {
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+            }
+            else if (rec.get('cmp') == 'account-index') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'qualityguaranteedepositmgm-index') {
+                flag = User.isAdmin() ? true : false;
+            }
+            else if (rec.get('cmp') == 'planlabor-index') {
+                flag = User.isGeneral() || User.isSupplier() ? false : true;
+            }
+            //项目经理、监理,以及财务部、最高管
+            else if (rec.get('cmp') == 'materialrequest-index'){
+                flag = User.isProjectManager()  
+                        || User.isProjectStaff()
+                        || User.isSupervisor() 
+                        || User.isFinanceManager()
+                        || User.isFinanceStaff()
+                        || User.isAdmin() ? true : false;
+            }
+            //供应商管理：对应项目经理、财务部、最高管
+            else if (rec.get('cmp') == 'suppliermanagement-index'){
+                flag = User.isProjectManager() 
+                        || User.isProjectStaff()
+                        || User.isFinanceManager()
+                        || User.isFinanceStaff()
+                        || User.isSupplier()
+                        || User.isAdmin() ? true : false;
             }
             else {
                 flag = true;

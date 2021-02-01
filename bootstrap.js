@@ -21,34 +21,57 @@ Ext.Loader.addClassPathMappings({
   "ExtThemeNeptune": "ext/packages/ext-theme-neptune/overrides",
   "FamilyDecoration.Application": "app/application.js",
   "FamilyDecoration.Common": "common/src/common.js",
+  "FamilyDecoration.controller.Account": "app/controller/account.js",
   "FamilyDecoration.controller.BasicItem": "app/controller/basicitem.js",
+  "FamilyDecoration.controller.BillAudit": "app/controller/billaudit.js",
   "FamilyDecoration.controller.Budget": "app/controller/budget.js",
   "FamilyDecoration.controller.Bulletin": "app/controller/bulletin.js",
+  "FamilyDecoration.controller.BusinessAggregation": "app/controller/businessaggregation.js",
+  "FamilyDecoration.controller.BusinessToTransfer": "app/controller/businesstotransfer.js",
   "FamilyDecoration.controller.Chart": "app/controller/chart.js",
   "FamilyDecoration.controller.Chat": "app/controller/chat.js",
+  "FamilyDecoration.controller.CheckBillItem": "app/controller/checkbillitem.js",
   "FamilyDecoration.controller.CheckBusiness": "app/controller/checkbusiness.js",
   "FamilyDecoration.controller.CheckLog": "app/controller/checklog.js",
   "FamilyDecoration.controller.CheckSignBusiness": "app/controller/checksignbusiness.js",
+  "FamilyDecoration.controller.ContractManagement": "app/controller/contractmanagement.js",
   "FamilyDecoration.controller.CostAnalysis": "app/controller/costanalysis.js",
   "FamilyDecoration.controller.DeadBusiness": "app/controller/deadbusiness.js",
-  "FamilyDecoration.controller.Leave": "app/controller/leave.js",
-  "FamilyDecoration.controller.LeaveApproval": "app/controller/leaveapproval.js",
+  "FamilyDecoration.controller.EntryNExit": "app/controller/entrynexit.js",
   "FamilyDecoration.controller.Mail": "app/controller/mail.js",
   "FamilyDecoration.controller.MainMaterial": "app/controller/mainmaterial.js",
+  "FamilyDecoration.controller.ManuallyCheckBill": "app/controller/manuallycheckbill.js",
+  "FamilyDecoration.controller.MaterialRequest": "app/controller/materialrequest.js",
   "FamilyDecoration.controller.Msg": "app/controller/msg.js",
   "FamilyDecoration.controller.MyBusiness": "app/controller/mybusiness.js",
   "FamilyDecoration.controller.MyLog": "app/controller/mylog.js",
   "FamilyDecoration.controller.MyTask": "app/controller/mytask.js",
+  "FamilyDecoration.controller.PaymentRequest": "app/controller/paymentrequest.js",
   "FamilyDecoration.controller.Personnel": "app/controller/personnel.js",
   "FamilyDecoration.controller.Plan": "app/controller/plan.js",
+  "FamilyDecoration.controller.PlanLabor": "app/controller/planlabor.js",
+  "FamilyDecoration.controller.PlanMaking": "app/controller/planmaking.js",
   "FamilyDecoration.controller.Progress": "app/controller/progress.js",
+  "FamilyDecoration.controller.ProjectCategory": "app/controller/projectcategory.js",
+  "FamilyDecoration.controller.ProjectFinanceManagement": "app/controller/projectfinancemanagement.js",
+  "FamilyDecoration.controller.ProjectProgress": "app/controller/projectprogress.js",
+  "FamilyDecoration.controller.QualityGuaranteeDepositMgm": "app/controller/qualityguaranteedepositmgm.js",
   "FamilyDecoration.controller.RegionMgm": "app/controller/regionmgm.js",
   "FamilyDecoration.controller.Setting": "app/controller/setting.js",
   "FamilyDecoration.controller.SignBusiness": "app/controller/signbusiness.js",
+  "FamilyDecoration.controller.StaffSalary": "app/controller/staffsalary.js",
+  "FamilyDecoration.controller.SupplierManagement": "app/controller/suppliermanagement.js",
+  "FamilyDecoration.controller.TargetSetting": "app/controller/targetsetting.js",
   "FamilyDecoration.controller.TaskAssign": "app/controller/taskassign.js",
+  "FamilyDecoration.controller.TeleMarket": "app/controller/telemarket.js",
+  "FamilyDecoration.controller.TotalPropertyManagement": "app/controller/totalpropertymanagement.js",
   "FamilyDecoration.controller.User": "app/controller/user.js",
   "FamilyDecoration.controller.Viewport": "app/controller/viewport.js",
+  "FamilyDecoration.model.Account": "app/model/account.js",
+  "FamilyDecoration.model.AccountLog": "app/model/accountlog.js",
+  "FamilyDecoration.model.AnalyticTable": "app/model/analytictable.js",
   "FamilyDecoration.model.AnnouncementComment": "app/model/announcementcomment.js",
+  "FamilyDecoration.model.AttachmentManagement": "app/model/attachmentmanagement.js",
   "FamilyDecoration.model.BasicItem": "app/model/basicitem.js",
   "FamilyDecoration.model.BasicSubItem": "app/model/basicsubitem.js",
   "FamilyDecoration.model.Budget": "app/model/budget.js",
@@ -57,14 +80,24 @@ Ext.Loader.addClassPathMappings({
   "FamilyDecoration.model.Bulletin": "app/model/bulletin.js",
   "FamilyDecoration.model.Business": "app/model/business.js",
   "FamilyDecoration.model.BusinessDetail": "app/model/businessdetail.js",
+  "FamilyDecoration.model.BusinessGoal": "app/model/businessgoal.js",
   "FamilyDecoration.model.Chart": "app/model/chart.js",
   "FamilyDecoration.model.ChartDetail": "app/model/chartdetail.js",
   "FamilyDecoration.model.Community": "app/model/community.js",
+  "FamilyDecoration.model.ContractType": "app/model/contracttype.js",
   "FamilyDecoration.model.CostAnalysis": "app/model/costanalysis.js",
+  "FamilyDecoration.model.CostComposition": "app/model/costcomposition.js",
+  "FamilyDecoration.model.DepaList": "app/model/depalist.js",
+  "FamilyDecoration.model.DiaryBill": "app/model/diarybill.js",
   "FamilyDecoration.model.Feature": "app/model/feature.js",
+  "FamilyDecoration.model.FinanceAggregation": "app/model/financeaggregation.js",
+  "FamilyDecoration.model.LogContent": "app/model/logcontent.js",
   "FamilyDecoration.model.LogList": "app/model/loglist.js",
   "FamilyDecoration.model.Mail": "app/model/mail.js",
   "FamilyDecoration.model.MainMaterial": "app/model/mainmaterial.js",
+  "FamilyDecoration.model.MaterialOrderItem": "app/model/materialorderitem.js",
+  "FamilyDecoration.model.MaterialOrderList": "app/model/materialorderlist.js",
+  "FamilyDecoration.model.MaterialOrderTemplate": "app/model/materialordertemplate.js",
   "FamilyDecoration.model.MemberList": "app/model/memberlist.js",
   "FamilyDecoration.model.Message": "app/model/message.js",
   "FamilyDecoration.model.Msg": "app/model/msg.js",
@@ -72,19 +105,41 @@ Ext.Loader.addClassPathMappings({
   "FamilyDecoration.model.PersonnelIndividual": "app/model/personnelindividual.js",
   "FamilyDecoration.model.PersonnelProject": "app/model/personnelproject.js",
   "FamilyDecoration.model.Plan": "app/model/plan.js",
+  "FamilyDecoration.model.PlanLabor": "app/model/planlabor.js",
+  "FamilyDecoration.model.PlanMaking": "app/model/planmaking.js",
   "FamilyDecoration.model.PotentialBusiness": "app/model/potentialbusiness.js",
+  "FamilyDecoration.model.PotentialBusinessDetail": "app/model/potentialbusinessdetail.js",
+  "FamilyDecoration.model.ProfessionType": "app/model/professiontype.js",
   "FamilyDecoration.model.Progress": "app/model/progress.js",
   "FamilyDecoration.model.Project": "app/model/project.js",
+  "FamilyDecoration.model.ProjectCategory": "app/model/projectcategory.js",
+  "FamilyDecoration.model.ProjectProgress": "app/model/projectprogress.js",
+  "FamilyDecoration.model.ProjectSummary": "app/model/projectsummary.js",
   "FamilyDecoration.model.RegionList": "app/model/regionlist.js",
   "FamilyDecoration.model.ScrutinizeList": "app/model/scrutinizelist.js",
+  "FamilyDecoration.model.SingleProfessionTypeBudget": "app/model/singleprofessiontypebudget.js",
+  "FamilyDecoration.model.SingleProjectBudgetTotal": "app/model/singleprojectbudgettotal.js",
+  "FamilyDecoration.model.SingleProjectBudgetTotalCostDifference": "app/model/singleprojectbudgettotalcostdifference.js",
+  "FamilyDecoration.model.StaffSalary": "app/model/staffsalary.js",
+  "FamilyDecoration.model.StatementBasicItem": "app/model/statementbasicitem.js",
+  "FamilyDecoration.model.StatementBill": "app/model/statementbill.js",
+  "FamilyDecoration.model.StatementBillAudit": "app/model/statementbillaudit.js",
+  "FamilyDecoration.model.StatementBillItem": "app/model/statementbillitem.js",
+  "FamilyDecoration.model.StatementBillItemRemark": "app/model/statementbillitemremark.js",
   "FamilyDecoration.model.StatisticTree": "app/model/statistictree.js",
+  "FamilyDecoration.model.Supplier": "app/model/supplier.js",
+  "FamilyDecoration.model.SupplierMaterial": "app/model/suppliermaterial.js",
   "FamilyDecoration.model.TaskList": "app/model/tasklist.js",
   "FamilyDecoration.model.TaskScrutinize": "app/model/taskscrutinize.js",
   "FamilyDecoration.model.TaskSelfAssessment": "app/model/taskselfassessment.js",
   "FamilyDecoration.model.TotalCost": "app/model/totalcost.js",
   "FamilyDecoration.model.User": "app/model/user.js",
   "FamilyDecoration.model.WorkCategory": "app/model/workcategory.js",
+  "FamilyDecoration.store.Account": "app/store/account.js",
+  "FamilyDecoration.store.AccountLog": "app/store/accountlog.js",
+  "FamilyDecoration.store.AnalyticTable": "app/store/analytictable.js",
   "FamilyDecoration.store.AnnouncementComment": "app/store/announcementcomment.js",
+  "FamilyDecoration.store.AttachmentManagement": "app/store/attachmentmanagement.js",
   "FamilyDecoration.store.BasicItem": "app/store/basicitem.js",
   "FamilyDecoration.store.BasicSubItem": "app/store/basicsubitem.js",
   "FamilyDecoration.store.Budget": "app/store/budget.js",
@@ -93,14 +148,24 @@ Ext.Loader.addClassPathMappings({
   "FamilyDecoration.store.Bulletin": "app/store/bulletin.js",
   "FamilyDecoration.store.Business": "app/store/business.js",
   "FamilyDecoration.store.BusinessDetail": "app/store/businessdetail.js",
+  "FamilyDecoration.store.BusinessGoal": "app/store/businessgoal.js",
   "FamilyDecoration.store.Chart": "app/store/chart.js",
   "FamilyDecoration.store.ChartDetail": "app/store/chartdetail.js",
   "FamilyDecoration.store.Community": "app/store/community.js",
+  "FamilyDecoration.store.ContractType": "app/store/contracttype.js",
   "FamilyDecoration.store.CostAnalysis": "app/store/costanalysis.js",
+  "FamilyDecoration.store.CostComposition": "app/store/costcomposition.js",
+  "FamilyDecoration.store.DepaList": "app/store/depalist.js",
+  "FamilyDecoration.store.DiaryBill": "app/store/diarybill.js",
   "FamilyDecoration.store.Feature": "app/store/feature.js",
+  "FamilyDecoration.store.FinanceAggregation": "app/store/financeaggregation.js",
+  "FamilyDecoration.store.LogContent": "app/store/logcontent.js",
   "FamilyDecoration.store.LogList": "app/store/loglist.js",
   "FamilyDecoration.store.Mail": "app/store/mail.js",
   "FamilyDecoration.store.MainMaterial": "app/store/mainmaterial.js",
+  "FamilyDecoration.store.MaterialOrderItem": "app/store/materialorderitem.js",
+  "FamilyDecoration.store.MaterialOrderList": "app/store/materialorderlist.js",
+  "FamilyDecoration.store.MaterialOrderTemplate": "app/store/materialordertemplate.js",
   "FamilyDecoration.store.MemberList": "app/store/memberlist.js",
   "FamilyDecoration.store.Message": "app/store/message.js",
   "FamilyDecoration.store.Msg": "app/store/msg.js",
@@ -108,71 +173,146 @@ Ext.Loader.addClassPathMappings({
   "FamilyDecoration.store.PersonnelIndividual": "app/store/personnelindividual.js",
   "FamilyDecoration.store.PersonnelProject": "app/store/personnelproject.js",
   "FamilyDecoration.store.PlanCategory": "app/store/plancategory.js",
+  "FamilyDecoration.store.PlanLabor": "app/store/planlabor.js",
+  "FamilyDecoration.store.PlanMaking": "app/store/planmaking.js",
   "FamilyDecoration.store.PotentialBusiness": "app/store/potentialbusiness.js",
+  "FamilyDecoration.store.PotentialBusinessDetail": "app/store/potentialbusinessdetail.js",
+  "FamilyDecoration.store.ProfessionType": "app/store/professiontype.js",
   "FamilyDecoration.store.Project": "app/store/project.js",
+  "FamilyDecoration.store.ProjectCategory": "app/store/projectcategory.js",
+  "FamilyDecoration.store.ProjectProgress": "app/store/projectprogress.js",
+  "FamilyDecoration.store.ProjectSummary": "app/store/projectsummary.js",
   "FamilyDecoration.store.RegionList": "app/store/regionlist.js",
   "FamilyDecoration.store.ScrutinizeList": "app/store/scrutinizelist.js",
+  "FamilyDecoration.store.SingleProfessionTypeBudget": "app/store/singleprofessiontypebudget.js",
+  "FamilyDecoration.store.SingleProjectBudgetTotal": "app/store/singleprojectbudgettotal.js",
+  "FamilyDecoration.store.SingleProjectBudgetTotalCostDifference": "app/store/singleprojectbudgettotalcostdifference.js",
+  "FamilyDecoration.store.StaffSalary": "app/store/staffsalary.js",
+  "FamilyDecoration.store.StatementBasicItem": "app/store/statementbasicitem.js",
+  "FamilyDecoration.store.StatementBill": "app/store/statementbill.js",
+  "FamilyDecoration.store.StatementBillAudit": "app/store/statementbillaudit.js",
+  "FamilyDecoration.store.StatementBillItem": "app/store/statementbillitem.js",
+  "FamilyDecoration.store.StatementBillItemRemark": "app/store/statementbillitemremark.js",
   "FamilyDecoration.store.StatisticTree": "app/store/statistictree.js",
+  "FamilyDecoration.store.Supplier": "app/store/supplier.js",
+  "FamilyDecoration.store.SupplierMaterial": "app/store/suppliermaterial.js",
   "FamilyDecoration.store.TaskList": "app/store/tasklist.js",
   "FamilyDecoration.store.TaskScrutinize": "app/store/taskscrutinize.js",
   "FamilyDecoration.store.TotalCost": "app/store/totalcost.js",
   "FamilyDecoration.store.User": "app/store/user.js",
   "FamilyDecoration.store.WorkCategory": "app/store/workcategory.js",
   "FamilyDecoration.view.Viewport": "app/view/viewport.js",
+  "FamilyDecoration.view.account.DateRangeFilter": "app/view/account/daterangefilter.js",
+  "FamilyDecoration.view.account.EditAccount": "app/view/account/editaccount.js",
+  "FamilyDecoration.view.account.Index": "app/view/account/index.js",
+  "FamilyDecoration.view.account.Transfer": "app/view/account/transfer.js",
   "FamilyDecoration.view.basicitem.AddBasicItem": "app/view/basicitem/addbasicitem.js",
   "FamilyDecoration.view.basicitem.AddBasicSubItem": "app/view/basicitem/addbasicsubitem.js",
   "FamilyDecoration.view.basicitem.Index": "app/view/basicitem/index.js",
   "FamilyDecoration.view.basicitem.SubItemTable": "app/view/basicitem/subitemtable.js",
+  "FamilyDecoration.view.billaudit.BillList": "app/view/billaudit/billlist.js",
+  "FamilyDecoration.view.billaudit.DateFilter": "app/view/billaudit/datefilter.js",
+  "FamilyDecoration.view.billaudit.Index": "app/view/billaudit/index.js",
   "FamilyDecoration.view.budget.AddBasicItem": "app/view/budget/addbasicitem.js",
   "FamilyDecoration.view.budget.AddBlankItem": "app/view/budget/addblankitem.js",
   "FamilyDecoration.view.budget.AddExistedItem": "app/view/budget/addexisteditem.js",
   "FamilyDecoration.view.budget.BudgetPanel": "app/view/budget/budgetpanel.js",
+  "FamilyDecoration.view.budget.BulkDeleteSmallItem": "app/view/budget/bulkdeletesmallitem.js",
   "FamilyDecoration.view.budget.EditHeader": "app/view/budget/editheader.js",
   "FamilyDecoration.view.budget.HistoryBudget": "app/view/budget/historybudget.js",
   "FamilyDecoration.view.budget.Index": "app/view/budget/index.js",
   "FamilyDecoration.view.bulletin.BulletinInspection": "app/view/bulletin/bulletininspection.js",
   "FamilyDecoration.view.bulletin.EditBulletin": "app/view/bulletin/editbulletin.js",
   "FamilyDecoration.view.bulletin.Index": "app/view/bulletin/index.js",
+  "FamilyDecoration.view.businessaggregation.BusinessList": "app/view/businessaggregation/businesslist.js",
+  "FamilyDecoration.view.businessaggregation.Index": "app/view/businessaggregation/index.js",
+  "FamilyDecoration.view.businesstotransfer.Index": "app/view/businesstotransfer/index.js",
   "FamilyDecoration.view.chart.AddCategory": "app/view/chart/addcategory.js",
   "FamilyDecoration.view.chart.BatchRemove": "app/view/chart/batchremove.js",
   "FamilyDecoration.view.chart.Index": "app/view/chart/index.js",
   "FamilyDecoration.view.chart.UploadForm": "app/view/chart/uploadform.js",
   "FamilyDecoration.view.chat.Index": "app/view/chat/index.js",
+  "FamilyDecoration.view.checkbillitem.AddCheckBillItem": "app/view/checkbillitem/addcheckbillitem.js",
+  "FamilyDecoration.view.checkbillitem.Index": "app/view/checkbillitem/index.js",
+  "FamilyDecoration.view.checkbillitem.PickBasicItemWithSameType": "app/view/checkbillitem/pickbasicitemwithsametype.js",
   "FamilyDecoration.view.checkbusiness.Index": "app/view/checkbusiness/index.js",
   "FamilyDecoration.view.checklog.Index": "app/view/checklog/index.js",
   "FamilyDecoration.view.checklog.MemberList": "app/view/checklog/memberlist.js",
   "FamilyDecoration.view.checklog.UserLogList": "app/view/checklog/userloglist.js",
   "FamilyDecoration.view.checksignbusiness.Index": "app/view/checksignbusiness/index.js",
   "FamilyDecoration.view.checksignbusiness.TransferToProject": "app/view/checksignbusiness/transfertoproject.js",
+  "FamilyDecoration.view.contractmanagement.EditAppendix": "app/view/contractmanagement/editappendix.js",
+  "FamilyDecoration.view.contractmanagement.EditContract": "app/view/contractmanagement/editcontract.js",
+  "FamilyDecoration.view.contractmanagement.Index": "app/view/contractmanagement/index.js",
+  "FamilyDecoration.view.contractmanagement.PickUser": "app/view/contractmanagement/pickuser.js",
+  "FamilyDecoration.view.contractmanagement.ProjectContract": "app/view/contractmanagement/projectcontract.js",
   "FamilyDecoration.view.costanalysis.CostAnalysis": "app/view/costanalysis/costanalysis.js",
   "FamilyDecoration.view.costanalysis.Index": "app/view/costanalysis/index.js",
   "FamilyDecoration.view.costanalysis.TotalCost": "app/view/costanalysis/totalcost.js",
+  "FamilyDecoration.view.deadbusiness.EditDeadBusiness": "app/view/deadbusiness/editdeadbusiness.js",
   "FamilyDecoration.view.deadbusiness.Index": "app/view/deadbusiness/index.js",
-  "FamilyDecoration.view.leave.Index": "app/view/leave/index.js",
-  "FamilyDecoration.view.leaveapproval.Index": "app/view/leaveapproval/index.js",
+  "FamilyDecoration.view.entrynexit.BusinessList": "app/view/entrynexit/businesslist.js",
+  "FamilyDecoration.view.entrynexit.EntryNExitBoard": "app/view/entrynexit/entrynexitboard.js",
+  "FamilyDecoration.view.entrynexit.Index": "app/view/entrynexit/index.js",
+  "FamilyDecoration.view.entrynexit.Payment": "app/view/entrynexit/payment.js",
+  "FamilyDecoration.view.entrynexit.ProjectList": "app/view/entrynexit/projectlist.js",
+  "FamilyDecoration.view.entrynexit.ReceivementDesignDeposit": "app/view/entrynexit/receivementdesigndeposit.js",
+  "FamilyDecoration.view.entrynexit.ReceivementLoan": "app/view/entrynexit/receivementloan.js",
+  "FamilyDecoration.view.entrynexit.ReceivementOther": "app/view/entrynexit/receivementother.js",
+  "FamilyDecoration.view.entrynexit.ReceivementProjectFee": "app/view/entrynexit/receivementprojectfee.js",
   "FamilyDecoration.view.mail.Index": "app/view/mail/index.js",
   "FamilyDecoration.view.mail.NewMail": "app/view/mail/newmail.js",
   "FamilyDecoration.view.mainmaterial.EditMainMaterial": "app/view/mainmaterial/editmainmaterial.js",
   "FamilyDecoration.view.mainmaterial.Index": "app/view/mainmaterial/index.js",
+  "FamilyDecoration.view.manuallycheckbill.AddBill": "app/view/manuallycheckbill/addbill.js",
+  "FamilyDecoration.view.manuallycheckbill.BillRecord": "app/view/manuallycheckbill/billrecord.js",
+  "FamilyDecoration.view.manuallycheckbill.BillTable": "app/view/manuallycheckbill/billtable.js",
+  "FamilyDecoration.view.manuallycheckbill.CheckBillList": "app/view/manuallycheckbill/checkbilllist.js",
+  "FamilyDecoration.view.manuallycheckbill.CustomizedBillItem": "app/view/manuallycheckbill/customizedbillitem.js",
+  "FamilyDecoration.view.manuallycheckbill.EditRemark": "app/view/manuallycheckbill/editremark.js",
+  "FamilyDecoration.view.manuallycheckbill.Index": "app/view/manuallycheckbill/index.js",
+  "FamilyDecoration.view.materialrequest.EditMaterialOrder": "app/view/materialrequest/editmaterialorder.js",
+  "FamilyDecoration.view.materialrequest.Index": "app/view/materialrequest/index.js",
+  "FamilyDecoration.view.materialrequest.MaterialOrder": "app/view/materialrequest/materialorder.js",
+  "FamilyDecoration.view.materialrequest.MaterialOrderTemplate": "app/view/materialrequest/materialordertemplate.js",
   "FamilyDecoration.view.msg.Index": "app/view/msg/index.js",
+  "FamilyDecoration.view.mybusiness.DispatchCsStaff": "app/view/mybusiness/dispatchcsstaff.js",
   "FamilyDecoration.view.mybusiness.EditClient": "app/view/mybusiness/editclient.js",
   "FamilyDecoration.view.mybusiness.EditCommunity": "app/view/mybusiness/editcommunity.js",
   "FamilyDecoration.view.mybusiness.EditInfo": "app/view/mybusiness/editinfo.js",
   "FamilyDecoration.view.mybusiness.Index": "app/view/mybusiness/index.js",
+  "FamilyDecoration.view.mybusiness.IndividualReminder": "app/view/mybusiness/individualreminder.js",
   "FamilyDecoration.view.mybusiness.RegionList": "app/view/mybusiness/regionlist.js",
   "FamilyDecoration.view.mybusiness.TransferToProject": "app/view/mybusiness/transfertoproject.js",
   "FamilyDecoration.view.mylog.AskLeave": "app/view/mylog/askleave.js",
+  "FamilyDecoration.view.mylog.EditComments": "app/view/mylog/editcomments.js",
   "FamilyDecoration.view.mylog.EditLogDetail": "app/view/mylog/editlogdetail.js",
   "FamilyDecoration.view.mylog.Index": "app/view/mylog/index.js",
+  "FamilyDecoration.view.mylog.LogContent": "app/view/mylog/logcontent.js",
   "FamilyDecoration.view.mylog.LogList": "app/view/mylog/loglist.js",
+  "FamilyDecoration.view.mylog.SelfPlan": "app/view/mylog/selfplan.js",
+  "FamilyDecoration.view.mylog.SummarizedLog": "app/view/mylog/summarizedlog.js",
+  "FamilyDecoration.view.mytask.AssistantList": "app/view/mytask/assistantlist.js",
   "FamilyDecoration.view.mytask.EditProcess": "app/view/mytask/editprocess.js",
   "FamilyDecoration.view.mytask.Index": "app/view/mytask/index.js",
   "FamilyDecoration.view.mytask.SelfAssess": "app/view/mytask/selfassess.js",
+  "FamilyDecoration.view.mytask.TaskGrid": "app/view/mytask/taskgrid.js",
   "FamilyDecoration.view.mytask.TaskList": "app/view/mytask/tasklist.js",
+  "FamilyDecoration.view.mytask.TaskTable": "app/view/mytask/tasktable.js",
+  "FamilyDecoration.view.paymentrequest.AttachmentManagement": "app/view/paymentrequest/attachmentmanagement.js",
+  "FamilyDecoration.view.paymentrequest.EditBelongedItem": "app/view/paymentrequest/editbelongeditem.js",
+  "FamilyDecoration.view.paymentrequest.EditRequest": "app/view/paymentrequest/editrequest.js",
+  "FamilyDecoration.view.paymentrequest.Index": "app/view/paymentrequest/index.js",
+  "FamilyDecoration.view.paymentrequest.PaymentListCt": "app/view/paymentrequest/paymentlistct.js",
   "FamilyDecoration.view.personnel.Index": "app/view/personnel/index.js",
   "FamilyDecoration.view.personnel.StatisticTree": "app/view/personnel/statistictree.js",
   "FamilyDecoration.view.plan.EditPlan": "app/view/plan/editplan.js",
   "FamilyDecoration.view.plan.Index": "app/view/plan/index.js",
+  "FamilyDecoration.view.planlabor.Index": "app/view/planlabor/index.js",
+  "FamilyDecoration.view.planlabor.ScheduledTimeTable": "app/view/planlabor/scheduledtimetable.js",
+  "FamilyDecoration.view.planmaking.AddPlanTable": "app/view/planmaking/addplantable.js",
+  "FamilyDecoration.view.planmaking.Index": "app/view/planmaking/index.js",
+  "FamilyDecoration.view.planmaking.PlanTable": "app/view/planmaking/plantable.js",
   "FamilyDecoration.view.progress.EditProgress": "app/view/progress/editprogress.js",
   "FamilyDecoration.view.progress.EditProject": "app/view/progress/editproject.js",
   "FamilyDecoration.view.progress.Index": "app/view/progress/index.js",
@@ -180,20 +320,62 @@ Ext.Loader.addClassPathMappings({
   "FamilyDecoration.view.progress.ProjectListByCaptain": "app/view/progress/projectlistbycaptain.js",
   "FamilyDecoration.view.progress.SearchFieldTree": "app/view/progress/searchfieldtree.js",
   "FamilyDecoration.view.progress.TreeFilter": "app/view/progress/treefilter.js",
+  "FamilyDecoration.view.projectcategory.Index": "app/view/projectcategory/index.js",
+  "FamilyDecoration.view.projectfinancemanagement.ColumnChart": "app/view/projectfinancemanagement/columnchart.js",
+  "FamilyDecoration.view.projectfinancemanagement.Index": "app/view/projectfinancemanagement/index.js",
+  "FamilyDecoration.view.projectfinancemanagement.PieChart": "app/view/projectfinancemanagement/piechart.js",
+  "FamilyDecoration.view.projectfinancemanagement.ProjectSummary": "app/view/projectfinancemanagement/projectsummary.js",
+  "FamilyDecoration.view.projectfinancemanagement.SingleProfessionTypeBudget": "app/view/projectfinancemanagement/singleprofessiontypebudget.js",
+  "FamilyDecoration.view.projectfinancemanagement.SingleProjectBudgetTotal": "app/view/projectfinancemanagement/singleprojectbudgettotal.js",
+  "FamilyDecoration.view.projectprogress.EditProgress": "app/view/projectprogress/editprogress.js",
+  "FamilyDecoration.view.projectprogress.Index": "app/view/projectprogress/index.js",
+  "FamilyDecoration.view.projectprogress.ProgressTable": "app/view/projectprogress/progresstable.js",
+  "FamilyDecoration.view.qualityguaranteedepositmgm.Index": "app/view/qualityguaranteedepositmgm/index.js",
+  "FamilyDecoration.view.qualityguaranteedepositmgm.ModifyQgd": "app/view/qualityguaranteedepositmgm/modifyqgd.js",
+  "FamilyDecoration.view.regionmgm.DispenseTelemarketingStaff": "app/view/regionmgm/dispensetelemarketingstaff.js",
   "FamilyDecoration.view.regionmgm.EditArea": "app/view/regionmgm/editarea.js",
   "FamilyDecoration.view.regionmgm.EditClient": "app/view/regionmgm/editclient.js",
   "FamilyDecoration.view.regionmgm.EditPotentialBusiness": "app/view/regionmgm/editpotentialbusiness.js",
   "FamilyDecoration.view.regionmgm.EditRegion": "app/view/regionmgm/editregion.js",
   "FamilyDecoration.view.regionmgm.Index": "app/view/regionmgm/index.js",
   "FamilyDecoration.view.setting.AddAccount": "app/view/setting/addaccount.js",
+  "FamilyDecoration.view.setting.DepartmentCombo": "app/view/setting/departmentcombo.js",
   "FamilyDecoration.view.setting.Index": "app/view/setting/index.js",
   "FamilyDecoration.view.setting.UserList": "app/view/setting/userlist.js",
+  "FamilyDecoration.view.signbusiness.ConfirmDesignStatus": "app/view/signbusiness/confirmdesignstatus.js",
   "FamilyDecoration.view.signbusiness.EditBusinessInfo": "app/view/signbusiness/editbusinessinfo.js",
+  "FamilyDecoration.view.signbusiness.EditDesignStatus": "app/view/signbusiness/editdesignstatus.js",
   "FamilyDecoration.view.signbusiness.GradeSignBusiness": "app/view/signbusiness/gradesignbusiness.js",
   "FamilyDecoration.view.signbusiness.Index": "app/view/signbusiness/index.js",
+  "FamilyDecoration.view.staffsalary.DepaList": "app/view/staffsalary/depalist.js",
+  "FamilyDecoration.view.staffsalary.DetailedSalary": "app/view/staffsalary/detailedsalary.js",
+  "FamilyDecoration.view.staffsalary.Index": "app/view/staffsalary/index.js",
+  "FamilyDecoration.view.staffsalary.Month": "app/view/staffsalary/month.js",
+  "FamilyDecoration.view.suppliermanagement.ApplyForPayment": "app/view/suppliermanagement/applyforpayment.js",
+  "FamilyDecoration.view.suppliermanagement.EditSupplier": "app/view/suppliermanagement/editsupplier.js",
+  "FamilyDecoration.view.suppliermanagement.EditSupplierMaterial": "app/view/suppliermanagement/editsuppliermaterial.js",
+  "FamilyDecoration.view.suppliermanagement.Index": "app/view/suppliermanagement/index.js",
+  "FamilyDecoration.view.suppliermanagement.MaterialOrderList": "app/view/suppliermanagement/materialorderlist.js",
+  "FamilyDecoration.view.suppliermanagement.PaymentBillCheck": "app/view/suppliermanagement/paymentbillcheck.js",
+  "FamilyDecoration.view.suppliermanagement.SupplierList": "app/view/suppliermanagement/supplierlist.js",
+  "FamilyDecoration.view.suppliermanagement.SupplierMaterial": "app/view/suppliermanagement/suppliermaterial.js",
+  "FamilyDecoration.view.targetsetting.AddTarget": "app/view/targetsetting/addtarget.js",
+  "FamilyDecoration.view.targetsetting.Index": "app/view/targetsetting/index.js",
+  "FamilyDecoration.view.targetsetting.TargetBoard": "app/view/targetsetting/targetboard.js",
   "FamilyDecoration.view.taskassign.AssignTaskWin": "app/view/taskassign/assigntaskwin.js",
   "FamilyDecoration.view.taskassign.Index": "app/view/taskassign/index.js",
   "FamilyDecoration.view.taskassign.UserTaskList": "app/view/taskassign/usertasklist.js",
+  "FamilyDecoration.view.telemarket.EditStatus": "app/view/telemarket/editstatus.js",
+  "FamilyDecoration.view.telemarket.Index": "app/view/telemarket/index.js",
+  "FamilyDecoration.view.telemarket.TransferToBusiness": "app/view/telemarket/transfertobusiness.js",
+  "FamilyDecoration.view.totalpropertymanagement.AnalysisTable": "app/view/totalpropertymanagement/analysistable.js",
+  "FamilyDecoration.view.totalpropertymanagement.DateFilter": "app/view/totalpropertymanagement/datefilter.js",
+  "FamilyDecoration.view.totalpropertymanagement.DiaryBill": "app/view/totalpropertymanagement/diarybill.js",
+  "FamilyDecoration.view.totalpropertymanagement.FinanceAggregation": "app/view/totalpropertymanagement/financeaggregation.js",
+  "FamilyDecoration.view.totalpropertymanagement.FinanceAnalysis": "app/view/totalpropertymanagement/financeanalysis.js",
+  "FamilyDecoration.view.totalpropertymanagement.Index": "app/view/totalpropertymanagement/index.js",
+  "FamilyDecoration.view.totalpropertymanagement.MonthlyBillDetail": "app/view/totalpropertymanagement/monthlybilldetail.js",
+  "FamilyDecoration.view.totalpropertymanagement.PieChart": "app/view/totalpropertymanagement/piechart.js",
   "FamilyDecoration.view.user.Index": "app/view/user/index.js"
 });
 
@@ -537,6 +719,10 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.form.field.HtmlEditor": [
     "Ext.form.HtmlEditor"
+  ],
+  "Ext.form.field.Month": [
+    "Ext.form.MonthField",
+    "Ext.form.Month"
   ],
   "Ext.form.field.Number": [
     "Ext.form.NumberField",
@@ -1049,34 +1235,57 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "FamilyDecoration.Application": [],
   "FamilyDecoration.Common": [],
+  "FamilyDecoration.controller.Account": [],
   "FamilyDecoration.controller.BasicItem": [],
+  "FamilyDecoration.controller.BillAudit": [],
   "FamilyDecoration.controller.Budget": [],
   "FamilyDecoration.controller.Bulletin": [],
+  "FamilyDecoration.controller.BusinessAggregation": [],
+  "FamilyDecoration.controller.BusinessToTransfer": [],
   "FamilyDecoration.controller.Chart": [],
   "FamilyDecoration.controller.Chat": [],
+  "FamilyDecoration.controller.CheckBillItem": [],
   "FamilyDecoration.controller.CheckBusiness": [],
   "FamilyDecoration.controller.CheckLog": [],
   "FamilyDecoration.controller.CheckSignBusiness": [],
+  "FamilyDecoration.controller.ContractManagement": [],
   "FamilyDecoration.controller.CostAnalysis": [],
   "FamilyDecoration.controller.DeadBusiness": [],
-  "FamilyDecoration.controller.Leave": [],
-  "FamilyDecoration.controller.LeaveApproval": [],
+  "FamilyDecoration.controller.EntryNExit": [],
   "FamilyDecoration.controller.Mail": [],
   "FamilyDecoration.controller.MainMaterial": [],
+  "FamilyDecoration.controller.ManuallyCheckBill": [],
+  "FamilyDecoration.controller.MaterialRequest": [],
   "FamilyDecoration.controller.Msg": [],
   "FamilyDecoration.controller.MyBusiness": [],
   "FamilyDecoration.controller.MyLog": [],
   "FamilyDecoration.controller.MyTask": [],
+  "FamilyDecoration.controller.PaymentRequest": [],
   "FamilyDecoration.controller.Personnel": [],
   "FamilyDecoration.controller.Plan": [],
+  "FamilyDecoration.controller.PlanLabor": [],
+  "FamilyDecoration.controller.PlanMaking": [],
   "FamilyDecoration.controller.Progress": [],
+  "FamilyDecoration.controller.ProjectCategory": [],
+  "FamilyDecoration.controller.ProjectFinanceManagement": [],
+  "FamilyDecoration.controller.ProjectProgress": [],
+  "FamilyDecoration.controller.QualityGuaranteeDepositMgm": [],
   "FamilyDecoration.controller.RegionMgm": [],
   "FamilyDecoration.controller.Setting": [],
   "FamilyDecoration.controller.SignBusiness": [],
+  "FamilyDecoration.controller.StaffSalary": [],
+  "FamilyDecoration.controller.SupplierManagement": [],
+  "FamilyDecoration.controller.TargetSetting": [],
   "FamilyDecoration.controller.TaskAssign": [],
+  "FamilyDecoration.controller.TeleMarket": [],
+  "FamilyDecoration.controller.TotalPropertyManagement": [],
   "FamilyDecoration.controller.User": [],
   "FamilyDecoration.controller.Viewport": [],
+  "FamilyDecoration.model.Account": [],
+  "FamilyDecoration.model.AccountLog": [],
+  "FamilyDecoration.model.AnalyticTable": [],
   "FamilyDecoration.model.AnnouncementComment": [],
+  "FamilyDecoration.model.AttachmentManagement": [],
   "FamilyDecoration.model.BasicItem": [],
   "FamilyDecoration.model.BasicSubItem": [],
   "FamilyDecoration.model.Budget": [],
@@ -1085,14 +1294,24 @@ Ext.ClassManager.addNameAlternateMappings({
   "FamilyDecoration.model.Bulletin": [],
   "FamilyDecoration.model.Business": [],
   "FamilyDecoration.model.BusinessDetail": [],
+  "FamilyDecoration.model.BusinessGoal": [],
   "FamilyDecoration.model.Chart": [],
   "FamilyDecoration.model.ChartDetail": [],
   "FamilyDecoration.model.Community": [],
+  "FamilyDecoration.model.ContractType": [],
   "FamilyDecoration.model.CostAnalysis": [],
+  "FamilyDecoration.model.CostComposition": [],
+  "FamilyDecoration.model.DepaList": [],
+  "FamilyDecoration.model.DiaryBill": [],
   "FamilyDecoration.model.Feature": [],
+  "FamilyDecoration.model.FinanceAggregation": [],
+  "FamilyDecoration.model.LogContent": [],
   "FamilyDecoration.model.LogList": [],
   "FamilyDecoration.model.Mail": [],
   "FamilyDecoration.model.MainMaterial": [],
+  "FamilyDecoration.model.MaterialOrderItem": [],
+  "FamilyDecoration.model.MaterialOrderList": [],
+  "FamilyDecoration.model.MaterialOrderTemplate": [],
   "FamilyDecoration.model.MemberList": [],
   "FamilyDecoration.model.Message": [],
   "FamilyDecoration.model.Msg": [],
@@ -1100,19 +1319,41 @@ Ext.ClassManager.addNameAlternateMappings({
   "FamilyDecoration.model.PersonnelIndividual": [],
   "FamilyDecoration.model.PersonnelProject": [],
   "FamilyDecoration.model.Plan": [],
+  "FamilyDecoration.model.PlanLabor": [],
+  "FamilyDecoration.model.PlanMaking": [],
   "FamilyDecoration.model.PotentialBusiness": [],
+  "FamilyDecoration.model.PotentialBusinessDetail": [],
+  "FamilyDecoration.model.ProfessionType": [],
   "FamilyDecoration.model.Progress": [],
   "FamilyDecoration.model.Project": [],
+  "FamilyDecoration.model.ProjectCategory": [],
+  "FamilyDecoration.model.ProjectProgress": [],
+  "FamilyDecoration.model.ProjectSummary": [],
   "FamilyDecoration.model.RegionList": [],
   "FamilyDecoration.model.ScrutinizeList": [],
+  "FamilyDecoration.model.SingleProfessionTypeBudget": [],
+  "FamilyDecoration.model.SingleProjectBudgetTotal": [],
+  "FamilyDecoration.model.SingleProjectBudgetTotalCostDifference": [],
+  "FamilyDecoration.model.StaffSalary": [],
+  "FamilyDecoration.model.StatementBasicItem": [],
+  "FamilyDecoration.model.StatementBill": [],
+  "FamilyDecoration.model.StatementBillAudit": [],
+  "FamilyDecoration.model.StatementBillItem": [],
+  "FamilyDecoration.model.StatementBillItemRemark": [],
   "FamilyDecoration.model.StatisticTree": [],
+  "FamilyDecoration.model.Supplier": [],
+  "FamilyDecoration.model.SupplierMaterial": [],
   "FamilyDecoration.model.TaskList": [],
   "FamilyDecoration.model.TaskScrutinize": [],
   "FamilyDecoration.model.TaskSelfAssessment": [],
   "FamilyDecoration.model.TotalCost": [],
   "FamilyDecoration.model.User": [],
   "FamilyDecoration.model.WorkCategory": [],
+  "FamilyDecoration.store.Account": [],
+  "FamilyDecoration.store.AccountLog": [],
+  "FamilyDecoration.store.AnalyticTable": [],
   "FamilyDecoration.store.AnnouncementComment": [],
+  "FamilyDecoration.store.AttachmentManagement": [],
   "FamilyDecoration.store.BasicItem": [],
   "FamilyDecoration.store.BasicSubItem": [],
   "FamilyDecoration.store.Budget": [],
@@ -1121,14 +1362,24 @@ Ext.ClassManager.addNameAlternateMappings({
   "FamilyDecoration.store.Bulletin": [],
   "FamilyDecoration.store.Business": [],
   "FamilyDecoration.store.BusinessDetail": [],
+  "FamilyDecoration.store.BusinessGoal": [],
   "FamilyDecoration.store.Chart": [],
   "FamilyDecoration.store.ChartDetail": [],
   "FamilyDecoration.store.Community": [],
+  "FamilyDecoration.store.ContractType": [],
   "FamilyDecoration.store.CostAnalysis": [],
+  "FamilyDecoration.store.CostComposition": [],
+  "FamilyDecoration.store.DepaList": [],
+  "FamilyDecoration.store.DiaryBill": [],
   "FamilyDecoration.store.Feature": [],
+  "FamilyDecoration.store.FinanceAggregation": [],
+  "FamilyDecoration.store.LogContent": [],
   "FamilyDecoration.store.LogList": [],
   "FamilyDecoration.store.Mail": [],
   "FamilyDecoration.store.MainMaterial": [],
+  "FamilyDecoration.store.MaterialOrderItem": [],
+  "FamilyDecoration.store.MaterialOrderList": [],
+  "FamilyDecoration.store.MaterialOrderTemplate": [],
   "FamilyDecoration.store.MemberList": [],
   "FamilyDecoration.store.Message": [],
   "FamilyDecoration.store.Msg": [],
@@ -1136,71 +1387,146 @@ Ext.ClassManager.addNameAlternateMappings({
   "FamilyDecoration.store.PersonnelIndividual": [],
   "FamilyDecoration.store.PersonnelProject": [],
   "FamilyDecoration.store.PlanCategory": [],
+  "FamilyDecoration.store.PlanLabor": [],
+  "FamilyDecoration.store.PlanMaking": [],
   "FamilyDecoration.store.PotentialBusiness": [],
+  "FamilyDecoration.store.PotentialBusinessDetail": [],
+  "FamilyDecoration.store.ProfessionType": [],
   "FamilyDecoration.store.Project": [],
+  "FamilyDecoration.store.ProjectCategory": [],
+  "FamilyDecoration.store.ProjectProgress": [],
+  "FamilyDecoration.store.ProjectSummary": [],
   "FamilyDecoration.store.RegionList": [],
   "FamilyDecoration.store.ScrutinizeList": [],
+  "FamilyDecoration.store.SingleProfessionTypeBudget": [],
+  "FamilyDecoration.store.SingleProjectBudgetTotal": [],
+  "FamilyDecoration.store.SingleProjectBudgetTotalCostDifference": [],
+  "FamilyDecoration.store.StaffSalary": [],
+  "FamilyDecoration.store.StatementBasicItem": [],
+  "FamilyDecoration.store.StatementBill": [],
+  "FamilyDecoration.store.StatementBillAudit": [],
+  "FamilyDecoration.store.StatementBillItem": [],
+  "FamilyDecoration.store.StatementBillItemRemark": [],
   "FamilyDecoration.store.StatisticTree": [],
+  "FamilyDecoration.store.Supplier": [],
+  "FamilyDecoration.store.SupplierMaterial": [],
   "FamilyDecoration.store.TaskList": [],
   "FamilyDecoration.store.TaskScrutinize": [],
   "FamilyDecoration.store.TotalCost": [],
   "FamilyDecoration.store.User": [],
   "FamilyDecoration.store.WorkCategory": [],
   "FamilyDecoration.view.Viewport": [],
+  "FamilyDecoration.view.account.DateRangeFilter": [],
+  "FamilyDecoration.view.account.EditAccount": [],
+  "FamilyDecoration.view.account.Index": [],
+  "FamilyDecoration.view.account.Transfer": [],
   "FamilyDecoration.view.basicitem.AddBasicItem": [],
   "FamilyDecoration.view.basicitem.AddBasicSubItem": [],
   "FamilyDecoration.view.basicitem.Index": [],
   "FamilyDecoration.view.basicitem.SubItemTable": [],
+  "FamilyDecoration.view.billaudit.BillList": [],
+  "FamilyDecoration.view.billaudit.DateFilter": [],
+  "FamilyDecoration.view.billaudit.Index": [],
   "FamilyDecoration.view.budget.AddBasicItem": [],
   "FamilyDecoration.view.budget.AddBlankItem": [],
   "FamilyDecoration.view.budget.AddExistedItem": [],
   "FamilyDecoration.view.budget.BudgetPanel": [],
+  "FamilyDecoration.view.budget.BulkDeleteSmallItem": [],
   "FamilyDecoration.view.budget.EditHeader": [],
   "FamilyDecoration.view.budget.HistoryBudget": [],
   "FamilyDecoration.view.budget.Index": [],
   "FamilyDecoration.view.bulletin.BulletinInspection": [],
   "FamilyDecoration.view.bulletin.EditBulletin": [],
   "FamilyDecoration.view.bulletin.Index": [],
+  "FamilyDecoration.view.businessaggregation.BusinessList": [],
+  "FamilyDecoration.view.businessaggregation.Index": [],
+  "FamilyDecoration.view.businesstotransfer.Index": [],
   "FamilyDecoration.view.chart.AddCategory": [],
   "FamilyDecoration.view.chart.BatchRemove": [],
   "FamilyDecoration.view.chart.Index": [],
   "FamilyDecoration.view.chart.UploadForm": [],
   "FamilyDecoration.view.chat.Index": [],
+  "FamilyDecoration.view.checkbillitem.AddCheckBillItem": [],
+  "FamilyDecoration.view.checkbillitem.Index": [],
+  "FamilyDecoration.view.checkbillitem.PickBasicItemWithSameType": [],
   "FamilyDecoration.view.checkbusiness.Index": [],
   "FamilyDecoration.view.checklog.Index": [],
   "FamilyDecoration.view.checklog.MemberList": [],
   "FamilyDecoration.view.checklog.UserLogList": [],
   "FamilyDecoration.view.checksignbusiness.Index": [],
   "FamilyDecoration.view.checksignbusiness.TransferToProject": [],
+  "FamilyDecoration.view.contractmanagement.EditAppendix": [],
+  "FamilyDecoration.view.contractmanagement.EditContract": [],
+  "FamilyDecoration.view.contractmanagement.Index": [],
+  "FamilyDecoration.view.contractmanagement.PickUser": [],
+  "FamilyDecoration.view.contractmanagement.ProjectContract": [],
   "FamilyDecoration.view.costanalysis.CostAnalysis": [],
   "FamilyDecoration.view.costanalysis.Index": [],
   "FamilyDecoration.view.costanalysis.TotalCost": [],
+  "FamilyDecoration.view.deadbusiness.EditDeadBusiness": [],
   "FamilyDecoration.view.deadbusiness.Index": [],
-  "FamilyDecoration.view.leave.Index": [],
-  "FamilyDecoration.view.leaveapproval.Index": [],
+  "FamilyDecoration.view.entrynexit.BusinessList": [],
+  "FamilyDecoration.view.entrynexit.EntryNExitBoard": [],
+  "FamilyDecoration.view.entrynexit.Index": [],
+  "FamilyDecoration.view.entrynexit.Payment": [],
+  "FamilyDecoration.view.entrynexit.ProjectList": [],
+  "FamilyDecoration.view.entrynexit.ReceivementDesignDeposit": [],
+  "FamilyDecoration.view.entrynexit.ReceivementLoan": [],
+  "FamilyDecoration.view.entrynexit.ReceivementOther": [],
+  "FamilyDecoration.view.entrynexit.ReceivementProjectFee": [],
   "FamilyDecoration.view.mail.Index": [],
   "FamilyDecoration.view.mail.NewMail": [],
   "FamilyDecoration.view.mainmaterial.EditMainMaterial": [],
   "FamilyDecoration.view.mainmaterial.Index": [],
+  "FamilyDecoration.view.manuallycheckbill.AddBill": [],
+  "FamilyDecoration.view.manuallycheckbill.BillRecord": [],
+  "FamilyDecoration.view.manuallycheckbill.BillTable": [],
+  "FamilyDecoration.view.manuallycheckbill.CheckBillList": [],
+  "FamilyDecoration.view.manuallycheckbill.CustomizedBillItem": [],
+  "FamilyDecoration.view.manuallycheckbill.EditRemark": [],
+  "FamilyDecoration.view.manuallycheckbill.Index": [],
+  "FamilyDecoration.view.materialrequest.EditMaterialOrder": [],
+  "FamilyDecoration.view.materialrequest.Index": [],
+  "FamilyDecoration.view.materialrequest.MaterialOrder": [],
+  "FamilyDecoration.view.materialrequest.MaterialOrderTemplate": [],
   "FamilyDecoration.view.msg.Index": [],
+  "FamilyDecoration.view.mybusiness.DispatchCsStaff": [],
   "FamilyDecoration.view.mybusiness.EditClient": [],
   "FamilyDecoration.view.mybusiness.EditCommunity": [],
   "FamilyDecoration.view.mybusiness.EditInfo": [],
   "FamilyDecoration.view.mybusiness.Index": [],
+  "FamilyDecoration.view.mybusiness.IndividualReminder": [],
   "FamilyDecoration.view.mybusiness.RegionList": [],
   "FamilyDecoration.view.mybusiness.TransferToProject": [],
   "FamilyDecoration.view.mylog.AskLeave": [],
+  "FamilyDecoration.view.mylog.EditComments": [],
   "FamilyDecoration.view.mylog.EditLogDetail": [],
   "FamilyDecoration.view.mylog.Index": [],
+  "FamilyDecoration.view.mylog.LogContent": [],
   "FamilyDecoration.view.mylog.LogList": [],
+  "FamilyDecoration.view.mylog.SelfPlan": [],
+  "FamilyDecoration.view.mylog.SummarizedLog": [],
+  "FamilyDecoration.view.mytask.AssistantList": [],
   "FamilyDecoration.view.mytask.EditProcess": [],
   "FamilyDecoration.view.mytask.Index": [],
   "FamilyDecoration.view.mytask.SelfAssess": [],
+  "FamilyDecoration.view.mytask.TaskGrid": [],
   "FamilyDecoration.view.mytask.TaskList": [],
+  "FamilyDecoration.view.mytask.TaskTable": [],
+  "FamilyDecoration.view.paymentrequest.AttachmentManagement": [],
+  "FamilyDecoration.view.paymentrequest.EditBelongedItem": [],
+  "FamilyDecoration.view.paymentrequest.EditRequest": [],
+  "FamilyDecoration.view.paymentrequest.Index": [],
+  "FamilyDecoration.view.paymentrequest.PaymentListCt": [],
   "FamilyDecoration.view.personnel.Index": [],
   "FamilyDecoration.view.personnel.StatisticTree": [],
   "FamilyDecoration.view.plan.EditPlan": [],
   "FamilyDecoration.view.plan.Index": [],
+  "FamilyDecoration.view.planlabor.Index": [],
+  "FamilyDecoration.view.planlabor.ScheduledTimeTable": [],
+  "FamilyDecoration.view.planmaking.AddPlanTable": [],
+  "FamilyDecoration.view.planmaking.Index": [],
+  "FamilyDecoration.view.planmaking.PlanTable": [],
   "FamilyDecoration.view.progress.EditProgress": [],
   "FamilyDecoration.view.progress.EditProject": [],
   "FamilyDecoration.view.progress.Index": [],
@@ -1208,20 +1534,66 @@ Ext.ClassManager.addNameAlternateMappings({
   "FamilyDecoration.view.progress.ProjectListByCaptain": [],
   "FamilyDecoration.view.progress.SearchFieldTree": [],
   "FamilyDecoration.view.progress.TreeFilter": [],
+  "FamilyDecoration.view.projectcategory.Index": [],
+  "FamilyDecoration.view.projectfinancemanagement.ColumnChart": [],
+  "FamilyDecoration.view.projectfinancemanagement.Index": [],
+  "FamilyDecoration.view.projectfinancemanagement.PieChart": [],
+  "FamilyDecoration.view.projectfinancemanagement.ProjectSummary": [],
+  "FamilyDecoration.view.projectfinancemanagement.SingleProfessionTypeBudget": [],
+  "FamilyDecoration.view.projectfinancemanagement.SingleProjectBudgetTotal": [],
+  "FamilyDecoration.view.projectprogress.EditProgress": [],
+  "FamilyDecoration.view.projectprogress.Index": [],
+  "FamilyDecoration.view.projectprogress.ProgressTable": [],
+  "FamilyDecoration.view.qualityguaranteedepositmgm.Index": [],
+  "FamilyDecoration.view.qualityguaranteedepositmgm.ModifyQgd": [],
+  "FamilyDecoration.view.regionmgm.DispenseTelemarketingStaff": [],
   "FamilyDecoration.view.regionmgm.EditArea": [],
   "FamilyDecoration.view.regionmgm.EditClient": [],
   "FamilyDecoration.view.regionmgm.EditPotentialBusiness": [],
   "FamilyDecoration.view.regionmgm.EditRegion": [],
   "FamilyDecoration.view.regionmgm.Index": [],
   "FamilyDecoration.view.setting.AddAccount": [],
+  "FamilyDecoration.view.setting.DepartmentCombo": [],
   "FamilyDecoration.view.setting.Index": [],
   "FamilyDecoration.view.setting.UserList": [],
+  "FamilyDecoration.view.signbusiness.ConfirmDesignStatus": [],
   "FamilyDecoration.view.signbusiness.EditBusinessInfo": [],
+  "FamilyDecoration.view.signbusiness.EditDesignStatus": [],
   "FamilyDecoration.view.signbusiness.GradeSignBusiness": [],
   "FamilyDecoration.view.signbusiness.Index": [],
+  "FamilyDecoration.view.staffsalary.DepaList": [],
+  "FamilyDecoration.view.staffsalary.DetailedSalary": [],
+  "FamilyDecoration.view.staffsalary.Index": [],
+  "FamilyDecoration.view.staffsalary.Month": [
+    "Ext.form.field.Month",
+    "Ext.form.MonthField",
+    "Ext.form.Month"
+  ],
+  "FamilyDecoration.view.suppliermanagement.ApplyForPayment": [],
+  "FamilyDecoration.view.suppliermanagement.EditSupplier": [],
+  "FamilyDecoration.view.suppliermanagement.EditSupplierMaterial": [],
+  "FamilyDecoration.view.suppliermanagement.Index": [],
+  "FamilyDecoration.view.suppliermanagement.MaterialOrderList": [],
+  "FamilyDecoration.view.suppliermanagement.PaymentBillCheck": [],
+  "FamilyDecoration.view.suppliermanagement.SupplierList": [],
+  "FamilyDecoration.view.suppliermanagement.SupplierMaterial": [],
+  "FamilyDecoration.view.targetsetting.AddTarget": [],
+  "FamilyDecoration.view.targetsetting.Index": [],
+  "FamilyDecoration.view.targetsetting.TargetBoard": [],
   "FamilyDecoration.view.taskassign.AssignTaskWin": [],
   "FamilyDecoration.view.taskassign.Index": [],
   "FamilyDecoration.view.taskassign.UserTaskList": [],
+  "FamilyDecoration.view.telemarket.EditStatus": [],
+  "FamilyDecoration.view.telemarket.Index": [],
+  "FamilyDecoration.view.telemarket.TransferToBusiness": [],
+  "FamilyDecoration.view.totalpropertymanagement.AnalysisTable": [],
+  "FamilyDecoration.view.totalpropertymanagement.DateFilter": [],
+  "FamilyDecoration.view.totalpropertymanagement.DiaryBill": [],
+  "FamilyDecoration.view.totalpropertymanagement.FinanceAggregation": [],
+  "FamilyDecoration.view.totalpropertymanagement.FinanceAnalysis": [],
+  "FamilyDecoration.view.totalpropertymanagement.Index": [],
+  "FamilyDecoration.view.totalpropertymanagement.MonthlyBillDetail": [],
+  "FamilyDecoration.view.totalpropertymanagement.PieChart": [],
   "FamilyDecoration.view.user.Index": []
 });
 
@@ -1598,6 +1970,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Ext.form.field.HtmlEditor": [
     "widget.htmleditor"
+  ],
+  "Ext.form.field.Month": [
+    "widget.monthfield"
   ],
   "Ext.form.field.Number": [
     "widget.numberfield"
@@ -2243,34 +2618,57 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "FamilyDecoration.Application": [],
   "FamilyDecoration.Common": [],
+  "FamilyDecoration.controller.Account": [],
   "FamilyDecoration.controller.BasicItem": [],
+  "FamilyDecoration.controller.BillAudit": [],
   "FamilyDecoration.controller.Budget": [],
   "FamilyDecoration.controller.Bulletin": [],
+  "FamilyDecoration.controller.BusinessAggregation": [],
+  "FamilyDecoration.controller.BusinessToTransfer": [],
   "FamilyDecoration.controller.Chart": [],
   "FamilyDecoration.controller.Chat": [],
+  "FamilyDecoration.controller.CheckBillItem": [],
   "FamilyDecoration.controller.CheckBusiness": [],
   "FamilyDecoration.controller.CheckLog": [],
   "FamilyDecoration.controller.CheckSignBusiness": [],
+  "FamilyDecoration.controller.ContractManagement": [],
   "FamilyDecoration.controller.CostAnalysis": [],
   "FamilyDecoration.controller.DeadBusiness": [],
-  "FamilyDecoration.controller.Leave": [],
-  "FamilyDecoration.controller.LeaveApproval": [],
+  "FamilyDecoration.controller.EntryNExit": [],
   "FamilyDecoration.controller.Mail": [],
   "FamilyDecoration.controller.MainMaterial": [],
+  "FamilyDecoration.controller.ManuallyCheckBill": [],
+  "FamilyDecoration.controller.MaterialRequest": [],
   "FamilyDecoration.controller.Msg": [],
   "FamilyDecoration.controller.MyBusiness": [],
   "FamilyDecoration.controller.MyLog": [],
   "FamilyDecoration.controller.MyTask": [],
+  "FamilyDecoration.controller.PaymentRequest": [],
   "FamilyDecoration.controller.Personnel": [],
   "FamilyDecoration.controller.Plan": [],
+  "FamilyDecoration.controller.PlanLabor": [],
+  "FamilyDecoration.controller.PlanMaking": [],
   "FamilyDecoration.controller.Progress": [],
+  "FamilyDecoration.controller.ProjectCategory": [],
+  "FamilyDecoration.controller.ProjectFinanceManagement": [],
+  "FamilyDecoration.controller.ProjectProgress": [],
+  "FamilyDecoration.controller.QualityGuaranteeDepositMgm": [],
   "FamilyDecoration.controller.RegionMgm": [],
   "FamilyDecoration.controller.Setting": [],
   "FamilyDecoration.controller.SignBusiness": [],
+  "FamilyDecoration.controller.StaffSalary": [],
+  "FamilyDecoration.controller.SupplierManagement": [],
+  "FamilyDecoration.controller.TargetSetting": [],
   "FamilyDecoration.controller.TaskAssign": [],
+  "FamilyDecoration.controller.TeleMarket": [],
+  "FamilyDecoration.controller.TotalPropertyManagement": [],
   "FamilyDecoration.controller.User": [],
   "FamilyDecoration.controller.Viewport": [],
+  "FamilyDecoration.model.Account": [],
+  "FamilyDecoration.model.AccountLog": [],
+  "FamilyDecoration.model.AnalyticTable": [],
   "FamilyDecoration.model.AnnouncementComment": [],
+  "FamilyDecoration.model.AttachmentManagement": [],
   "FamilyDecoration.model.BasicItem": [],
   "FamilyDecoration.model.BasicSubItem": [],
   "FamilyDecoration.model.Budget": [],
@@ -2279,14 +2677,24 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.model.Bulletin": [],
   "FamilyDecoration.model.Business": [],
   "FamilyDecoration.model.BusinessDetail": [],
+  "FamilyDecoration.model.BusinessGoal": [],
   "FamilyDecoration.model.Chart": [],
   "FamilyDecoration.model.ChartDetail": [],
   "FamilyDecoration.model.Community": [],
+  "FamilyDecoration.model.ContractType": [],
   "FamilyDecoration.model.CostAnalysis": [],
+  "FamilyDecoration.model.CostComposition": [],
+  "FamilyDecoration.model.DepaList": [],
+  "FamilyDecoration.model.DiaryBill": [],
   "FamilyDecoration.model.Feature": [],
+  "FamilyDecoration.model.FinanceAggregation": [],
+  "FamilyDecoration.model.LogContent": [],
   "FamilyDecoration.model.LogList": [],
   "FamilyDecoration.model.Mail": [],
   "FamilyDecoration.model.MainMaterial": [],
+  "FamilyDecoration.model.MaterialOrderItem": [],
+  "FamilyDecoration.model.MaterialOrderList": [],
+  "FamilyDecoration.model.MaterialOrderTemplate": [],
   "FamilyDecoration.model.MemberList": [],
   "FamilyDecoration.model.Message": [],
   "FamilyDecoration.model.Msg": [],
@@ -2294,19 +2702,41 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.model.PersonnelIndividual": [],
   "FamilyDecoration.model.PersonnelProject": [],
   "FamilyDecoration.model.Plan": [],
+  "FamilyDecoration.model.PlanLabor": [],
+  "FamilyDecoration.model.PlanMaking": [],
   "FamilyDecoration.model.PotentialBusiness": [],
+  "FamilyDecoration.model.PotentialBusinessDetail": [],
+  "FamilyDecoration.model.ProfessionType": [],
   "FamilyDecoration.model.Progress": [],
   "FamilyDecoration.model.Project": [],
+  "FamilyDecoration.model.ProjectCategory": [],
+  "FamilyDecoration.model.ProjectProgress": [],
+  "FamilyDecoration.model.ProjectSummary": [],
   "FamilyDecoration.model.RegionList": [],
   "FamilyDecoration.model.ScrutinizeList": [],
+  "FamilyDecoration.model.SingleProfessionTypeBudget": [],
+  "FamilyDecoration.model.SingleProjectBudgetTotal": [],
+  "FamilyDecoration.model.SingleProjectBudgetTotalCostDifference": [],
+  "FamilyDecoration.model.StaffSalary": [],
+  "FamilyDecoration.model.StatementBasicItem": [],
+  "FamilyDecoration.model.StatementBill": [],
+  "FamilyDecoration.model.StatementBillAudit": [],
+  "FamilyDecoration.model.StatementBillItem": [],
+  "FamilyDecoration.model.StatementBillItemRemark": [],
   "FamilyDecoration.model.StatisticTree": [],
+  "FamilyDecoration.model.Supplier": [],
+  "FamilyDecoration.model.SupplierMaterial": [],
   "FamilyDecoration.model.TaskList": [],
   "FamilyDecoration.model.TaskScrutinize": [],
   "FamilyDecoration.model.TaskSelfAssessment": [],
   "FamilyDecoration.model.TotalCost": [],
   "FamilyDecoration.model.User": [],
   "FamilyDecoration.model.WorkCategory": [],
+  "FamilyDecoration.store.Account": [],
+  "FamilyDecoration.store.AccountLog": [],
+  "FamilyDecoration.store.AnalyticTable": [],
   "FamilyDecoration.store.AnnouncementComment": [],
+  "FamilyDecoration.store.AttachmentManagement": [],
   "FamilyDecoration.store.BasicItem": [],
   "FamilyDecoration.store.BasicSubItem": [],
   "FamilyDecoration.store.Budget": [],
@@ -2315,14 +2745,24 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.store.Bulletin": [],
   "FamilyDecoration.store.Business": [],
   "FamilyDecoration.store.BusinessDetail": [],
+  "FamilyDecoration.store.BusinessGoal": [],
   "FamilyDecoration.store.Chart": [],
   "FamilyDecoration.store.ChartDetail": [],
   "FamilyDecoration.store.Community": [],
+  "FamilyDecoration.store.ContractType": [],
   "FamilyDecoration.store.CostAnalysis": [],
+  "FamilyDecoration.store.CostComposition": [],
+  "FamilyDecoration.store.DepaList": [],
+  "FamilyDecoration.store.DiaryBill": [],
   "FamilyDecoration.store.Feature": [],
+  "FamilyDecoration.store.FinanceAggregation": [],
+  "FamilyDecoration.store.LogContent": [],
   "FamilyDecoration.store.LogList": [],
   "FamilyDecoration.store.Mail": [],
   "FamilyDecoration.store.MainMaterial": [],
+  "FamilyDecoration.store.MaterialOrderItem": [],
+  "FamilyDecoration.store.MaterialOrderList": [],
+  "FamilyDecoration.store.MaterialOrderTemplate": [],
   "FamilyDecoration.store.MemberList": [],
   "FamilyDecoration.store.Message": [],
   "FamilyDecoration.store.Msg": [],
@@ -2330,17 +2770,47 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.store.PersonnelIndividual": [],
   "FamilyDecoration.store.PersonnelProject": [],
   "FamilyDecoration.store.PlanCategory": [],
+  "FamilyDecoration.store.PlanLabor": [],
+  "FamilyDecoration.store.PlanMaking": [],
   "FamilyDecoration.store.PotentialBusiness": [],
+  "FamilyDecoration.store.PotentialBusinessDetail": [],
+  "FamilyDecoration.store.ProfessionType": [],
   "FamilyDecoration.store.Project": [],
+  "FamilyDecoration.store.ProjectCategory": [],
+  "FamilyDecoration.store.ProjectProgress": [],
+  "FamilyDecoration.store.ProjectSummary": [],
   "FamilyDecoration.store.RegionList": [],
   "FamilyDecoration.store.ScrutinizeList": [],
+  "FamilyDecoration.store.SingleProfessionTypeBudget": [],
+  "FamilyDecoration.store.SingleProjectBudgetTotal": [],
+  "FamilyDecoration.store.SingleProjectBudgetTotalCostDifference": [],
+  "FamilyDecoration.store.StaffSalary": [],
+  "FamilyDecoration.store.StatementBasicItem": [],
+  "FamilyDecoration.store.StatementBill": [],
+  "FamilyDecoration.store.StatementBillAudit": [],
+  "FamilyDecoration.store.StatementBillItem": [],
+  "FamilyDecoration.store.StatementBillItemRemark": [],
   "FamilyDecoration.store.StatisticTree": [],
+  "FamilyDecoration.store.Supplier": [],
+  "FamilyDecoration.store.SupplierMaterial": [],
   "FamilyDecoration.store.TaskList": [],
   "FamilyDecoration.store.TaskScrutinize": [],
   "FamilyDecoration.store.TotalCost": [],
   "FamilyDecoration.store.User": [],
   "FamilyDecoration.store.WorkCategory": [],
   "FamilyDecoration.view.Viewport": [],
+  "FamilyDecoration.view.account.DateRangeFilter": [
+    "widget.account-daterangefilter"
+  ],
+  "FamilyDecoration.view.account.EditAccount": [
+    "widget.account-editaccount"
+  ],
+  "FamilyDecoration.view.account.Index": [
+    "widget.account-index"
+  ],
+  "FamilyDecoration.view.account.Transfer": [
+    "widget.account-transfer"
+  ],
   "FamilyDecoration.view.basicitem.AddBasicItem": [
     "widget.basicitem-addbasicitem"
   ],
@@ -2352,6 +2822,15 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "FamilyDecoration.view.basicitem.SubItemTable": [
     "widget.basicitem-subitemtable"
+  ],
+  "FamilyDecoration.view.billaudit.BillList": [
+    "widget.billaudit-billlist"
+  ],
+  "FamilyDecoration.view.billaudit.DateFilter": [
+    "widget.billaudit-datefilter"
+  ],
+  "FamilyDecoration.view.billaudit.Index": [
+    "widget.billaudit-index"
   ],
   "FamilyDecoration.view.budget.AddBasicItem": [
     "widget.budget-addbasicitem"
@@ -2365,6 +2844,9 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.budget.BudgetPanel": [
     "widget.budget-budgetpanel"
   ],
+  "FamilyDecoration.view.budget.BulkDeleteSmallItem": [
+    "widget.budget-bulkdeletesmallitem"
+  ],
   "FamilyDecoration.view.budget.EditHeader": [],
   "FamilyDecoration.view.budget.HistoryBudget": [
     "widget.budget-historybudget"
@@ -2376,6 +2858,15 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.bulletin.EditBulletin": [],
   "FamilyDecoration.view.bulletin.Index": [
     "widget.bulletin-index"
+  ],
+  "FamilyDecoration.view.businessaggregation.BusinessList": [
+    "widget.businessaggregation-businesslist"
+  ],
+  "FamilyDecoration.view.businessaggregation.Index": [
+    "widget.businessaggregation-index"
+  ],
+  "FamilyDecoration.view.businesstotransfer.Index": [
+    "widget.businesstotransfer-index"
   ],
   "FamilyDecoration.view.chart.AddCategory": [
     "widget.chart-addcategory"
@@ -2391,6 +2882,15 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "FamilyDecoration.view.chat.Index": [
     "widget.chat-index"
+  ],
+  "FamilyDecoration.view.checkbillitem.AddCheckBillItem": [
+    "widget.checkbillitem-addcheckbillitem"
+  ],
+  "FamilyDecoration.view.checkbillitem.Index": [
+    "widget.checkbillitem-index"
+  ],
+  "FamilyDecoration.view.checkbillitem.PickBasicItemWithSameType": [
+    "widget.checkbillitem-pickbasicitemwithsametype"
   ],
   "FamilyDecoration.view.checkbusiness.Index": [
     "widget.checkbusiness-index"
@@ -2410,6 +2910,21 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.checksignbusiness.TransferToProject": [
     "widget.checksignbusiness-transfertoproject"
   ],
+  "FamilyDecoration.view.contractmanagement.EditAppendix": [
+    "widget.contractmanagement-editappendix"
+  ],
+  "FamilyDecoration.view.contractmanagement.EditContract": [
+    "widget.contractmanagement-editcontract"
+  ],
+  "FamilyDecoration.view.contractmanagement.Index": [
+    "widget.contractmanagement-index"
+  ],
+  "FamilyDecoration.view.contractmanagement.PickUser": [
+    "widget.contractmanagement-PickUser"
+  ],
+  "FamilyDecoration.view.contractmanagement.ProjectContract": [
+    "widget.contractmanagement-projectcontract"
+  ],
   "FamilyDecoration.view.costanalysis.CostAnalysis": [
     "widget.costanalysis-costanalysis"
   ],
@@ -2419,14 +2934,38 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.costanalysis.TotalCost": [
     "widget.costanalysis-totalcost"
   ],
+  "FamilyDecoration.view.deadbusiness.EditDeadBusiness": [
+    "widget.deadbusiness-editdeadbusiness"
+  ],
   "FamilyDecoration.view.deadbusiness.Index": [
     "widget.deadbusiness-index"
   ],
-  "FamilyDecoration.view.leave.Index": [
-    "widget.leave-index"
+  "FamilyDecoration.view.entrynexit.BusinessList": [
+    "widget.entrynexit-businesslist"
   ],
-  "FamilyDecoration.view.leaveapproval.Index": [
-    "widget.leaveapproval-index"
+  "FamilyDecoration.view.entrynexit.EntryNExitBoard": [
+    "widget.entrynexit-entrynexitboard"
+  ],
+  "FamilyDecoration.view.entrynexit.Index": [
+    "widget.entrynexit-index"
+  ],
+  "FamilyDecoration.view.entrynexit.Payment": [
+    "widget.entrynexit-payment"
+  ],
+  "FamilyDecoration.view.entrynexit.ProjectList": [
+    "widget.entrynexit-projectlist"
+  ],
+  "FamilyDecoration.view.entrynexit.ReceivementDesignDeposit": [
+    "widget.entrynexit-receivementdesigndeposit"
+  ],
+  "FamilyDecoration.view.entrynexit.ReceivementLoan": [
+    "widget.entrynexit-receivementloan"
+  ],
+  "FamilyDecoration.view.entrynexit.ReceivementOther": [
+    "widget.entrynexit-receivementother"
+  ],
+  "FamilyDecoration.view.entrynexit.ReceivementProjectFee": [
+    "widget.entrynexit-receivementprojectfee"
   ],
   "FamilyDecoration.view.mail.Index": [
     "widget.mail-index"
@@ -2440,8 +2979,44 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.mainmaterial.Index": [
     "widget.mainmaterial-index"
   ],
+  "FamilyDecoration.view.manuallycheckbill.AddBill": [
+    "widget.manuallycheckbill-addbill"
+  ],
+  "FamilyDecoration.view.manuallycheckbill.BillRecord": [
+    "widget.manuallycheckbill-billrecord"
+  ],
+  "FamilyDecoration.view.manuallycheckbill.BillTable": [
+    "widget.manuallycheckbill-billtable"
+  ],
+  "FamilyDecoration.view.manuallycheckbill.CheckBillList": [
+    "widget.manuallycheckbill-checkbilllist"
+  ],
+  "FamilyDecoration.view.manuallycheckbill.CustomizedBillItem": [
+    "widget.manuallycheckbill-customizedbillitem"
+  ],
+  "FamilyDecoration.view.manuallycheckbill.EditRemark": [
+    "widget.manuallycheckbill-editremark"
+  ],
+  "FamilyDecoration.view.manuallycheckbill.Index": [
+    "widget.manuallycheckbill-index"
+  ],
+  "FamilyDecoration.view.materialrequest.EditMaterialOrder": [
+    "widget.materialrequest-editmaterialorder"
+  ],
+  "FamilyDecoration.view.materialrequest.Index": [
+    "widget.materialrequest-index"
+  ],
+  "FamilyDecoration.view.materialrequest.MaterialOrder": [
+    "widget.materialrequest-materialorder"
+  ],
+  "FamilyDecoration.view.materialrequest.MaterialOrderTemplate": [
+    "widget.materialrequest-materialordertemplate"
+  ],
   "FamilyDecoration.view.msg.Index": [
     "widget.msg-index"
+  ],
+  "FamilyDecoration.view.mybusiness.DispatchCsStaff": [
+    "widget.mybusiness-dispatchcsstaff"
   ],
   "FamilyDecoration.view.mybusiness.EditClient": [
     "widget.mybusiness-editclient"
@@ -2455,6 +3030,9 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.mybusiness.Index": [
     "widget.mybusiness-index"
   ],
+  "FamilyDecoration.view.mybusiness.IndividualReminder": [
+    "widget.mybusiness-individualreminder"
+  ],
   "FamilyDecoration.view.mybusiness.RegionList": [
     "widget.mybusiness-regionlist"
   ],
@@ -2464,14 +3042,29 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.mylog.AskLeave": [
     "widget.mylog-askleave"
   ],
+  "FamilyDecoration.view.mylog.EditComments": [
+    "widget.mylog-editcomments"
+  ],
   "FamilyDecoration.view.mylog.EditLogDetail": [
     "widget.mylog-editlogdetail"
   ],
   "FamilyDecoration.view.mylog.Index": [
     "widget.mylog-index"
   ],
+  "FamilyDecoration.view.mylog.LogContent": [
+    "widget.mylog-logcontent"
+  ],
   "FamilyDecoration.view.mylog.LogList": [
     "widget.mylog-loglist"
+  ],
+  "FamilyDecoration.view.mylog.SelfPlan": [
+    "widget.mylog-selfplan"
+  ],
+  "FamilyDecoration.view.mylog.SummarizedLog": [
+    "widget.mylog-summarizedlog"
+  ],
+  "FamilyDecoration.view.mytask.AssistantList": [
+    "widget.mytask-assistantlist"
   ],
   "FamilyDecoration.view.mytask.EditProcess": [
     "widget.mytask-editprocess"
@@ -2482,8 +3075,29 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.mytask.SelfAssess": [
     "widget.mytask-selfassess"
   ],
+  "FamilyDecoration.view.mytask.TaskGrid": [
+    "widget.mytask-taskgrid"
+  ],
   "FamilyDecoration.view.mytask.TaskList": [
     "widget.mytask-tasklist"
+  ],
+  "FamilyDecoration.view.mytask.TaskTable": [
+    "widget.mytask-tasktable"
+  ],
+  "FamilyDecoration.view.paymentrequest.AttachmentManagement": [
+    "widget.paymentrequest-attachmentmanagement"
+  ],
+  "FamilyDecoration.view.paymentrequest.EditBelongedItem": [
+    "widget.paymentrequest-editbelongeditem"
+  ],
+  "FamilyDecoration.view.paymentrequest.EditRequest": [
+    "widget.paymentrequest-editrequest"
+  ],
+  "FamilyDecoration.view.paymentrequest.Index": [
+    "widget.paymentrequest-index"
+  ],
+  "FamilyDecoration.view.paymentrequest.PaymentListCt": [
+    "widget.paymentrequest-paymentlistct"
   ],
   "FamilyDecoration.view.personnel.Index": [
     "widget.personnel-index"
@@ -2496,6 +3110,21 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "FamilyDecoration.view.plan.Index": [
     "widget.plan-index"
+  ],
+  "FamilyDecoration.view.planlabor.Index": [
+    "widget.planlabor-index"
+  ],
+  "FamilyDecoration.view.planlabor.ScheduledTimeTable": [
+    "widget.planlabor-scheduledtimetable"
+  ],
+  "FamilyDecoration.view.planmaking.AddPlanTable": [
+    "widget.planmaking-addplantable"
+  ],
+  "FamilyDecoration.view.planmaking.Index": [
+    "widget.planmaking-index"
+  ],
+  "FamilyDecoration.view.planmaking.PlanTable": [
+    "widget.planmaking-plantable"
   ],
   "FamilyDecoration.view.progress.EditProgress": [
     "widget.progress-editprogress"
@@ -2518,6 +3147,45 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.progress.TreeFilter": [
     "plugin.treefilter"
   ],
+  "FamilyDecoration.view.projectcategory.Index": [
+    "widget.projectcategory-index"
+  ],
+  "FamilyDecoration.view.projectfinancemanagement.ColumnChart": [
+    "widget.projectfinancemanagement-columnchart"
+  ],
+  "FamilyDecoration.view.projectfinancemanagement.Index": [
+    "widget.projectfinancemanagement-index"
+  ],
+  "FamilyDecoration.view.projectfinancemanagement.PieChart": [
+    "widget.projectfinancemanagement-piechart"
+  ],
+  "FamilyDecoration.view.projectfinancemanagement.ProjectSummary": [
+    "widget.projectfinancemanagement-projectsummary"
+  ],
+  "FamilyDecoration.view.projectfinancemanagement.SingleProfessionTypeBudget": [
+    "widget.projectfinancemanagement-singleprofessiontypebudget"
+  ],
+  "FamilyDecoration.view.projectfinancemanagement.SingleProjectBudgetTotal": [
+    "widget.projectfinancemanagement-singleprojectbudgettotal"
+  ],
+  "FamilyDecoration.view.projectprogress.EditProgress": [
+    "widget.projectprogress-editprogress"
+  ],
+  "FamilyDecoration.view.projectprogress.Index": [
+    "widget.projectprogress-index"
+  ],
+  "FamilyDecoration.view.projectprogress.ProgressTable": [
+    "widget.projectprogress-progresstable"
+  ],
+  "FamilyDecoration.view.qualityguaranteedepositmgm.Index": [
+    "widget.qualityguaranteedepositmgm-index"
+  ],
+  "FamilyDecoration.view.qualityguaranteedepositmgm.ModifyQgd": [
+    "widget.qualityguaranteedepositmgm-modifyqgd"
+  ],
+  "FamilyDecoration.view.regionmgm.DispenseTelemarketingStaff": [
+    "widget.regionmgm-dispensetelemarketingstaff"
+  ],
   "FamilyDecoration.view.regionmgm.EditArea": [
     "widget.regionmgm-editarea"
   ],
@@ -2536,20 +3204,74 @@ Ext.ClassManager.addNameAliasMappings({
   "FamilyDecoration.view.setting.AddAccount": [
     "widget.setting-addaccount"
   ],
+  "FamilyDecoration.view.setting.DepartmentCombo": [
+    "widget.setting-departmentcombo"
+  ],
   "FamilyDecoration.view.setting.Index": [
     "widget.setting-index"
   ],
   "FamilyDecoration.view.setting.UserList": [
     "widget.setting-userlist"
   ],
+  "FamilyDecoration.view.signbusiness.ConfirmDesignStatus": [
+    "widget.signbusiness-confirmdesignstatus"
+  ],
   "FamilyDecoration.view.signbusiness.EditBusinessInfo": [
     "widget.signbusiness-editbusinessinfo"
+  ],
+  "FamilyDecoration.view.signbusiness.EditDesignStatus": [
+    "widget.signbusiness-editdesignstatus"
   ],
   "FamilyDecoration.view.signbusiness.GradeSignBusiness": [
     "widget.signbusiness-gradesignbusiness"
   ],
   "FamilyDecoration.view.signbusiness.Index": [
     "widget.signbusiness-index"
+  ],
+  "FamilyDecoration.view.staffsalary.DepaList": [
+    "widget.staffsalary-depalist"
+  ],
+  "FamilyDecoration.view.staffsalary.DetailedSalary": [
+    "widget.staffsalary-detailedsalary"
+  ],
+  "FamilyDecoration.view.staffsalary.Index": [
+    "widget.staffsalary-index"
+  ],
+  "FamilyDecoration.view.staffsalary.Month": [
+    "widget.staffsalary-monthfield"
+  ],
+  "FamilyDecoration.view.suppliermanagement.ApplyForPayment": [
+    "widget.suppliermanagement-applyforpayment"
+  ],
+  "FamilyDecoration.view.suppliermanagement.EditSupplier": [
+    "widget.suppliermanagement-editsupplier"
+  ],
+  "FamilyDecoration.view.suppliermanagement.EditSupplierMaterial": [
+    "widget.suppliermanagement-editsuppliermaterial"
+  ],
+  "FamilyDecoration.view.suppliermanagement.Index": [
+    "widget.suppliermanagement-index"
+  ],
+  "FamilyDecoration.view.suppliermanagement.MaterialOrderList": [
+    "widget.suppliermanagement-materialorderlist"
+  ],
+  "FamilyDecoration.view.suppliermanagement.PaymentBillCheck": [
+    "widget.suppliermanagement-paymentbillcheck"
+  ],
+  "FamilyDecoration.view.suppliermanagement.SupplierList": [
+    "widget.suppliermanagement-supplierlist"
+  ],
+  "FamilyDecoration.view.suppliermanagement.SupplierMaterial": [
+    "widget.suppliermanagement-suppliermaterial"
+  ],
+  "FamilyDecoration.view.targetsetting.AddTarget": [
+    "widget.targetsetting-addtarget"
+  ],
+  "FamilyDecoration.view.targetsetting.Index": [
+    "widget.targetsetting-index"
+  ],
+  "FamilyDecoration.view.targetsetting.TargetBoard": [
+    "widget.targetsetting-targetboard"
   ],
   "FamilyDecoration.view.taskassign.AssignTaskWin": [
     "widget.taskassign-assigntaskwin"
@@ -2559,6 +3281,39 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "FamilyDecoration.view.taskassign.UserTaskList": [
     "widget.taskassign-usertasklist"
+  ],
+  "FamilyDecoration.view.telemarket.EditStatus": [
+    "widget.telemarket-editstatus"
+  ],
+  "FamilyDecoration.view.telemarket.Index": [
+    "widget.telemarket-index"
+  ],
+  "FamilyDecoration.view.telemarket.TransferToBusiness": [
+    "widget.telemarket-transfertobusiness"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.AnalysisTable": [
+    "widget.totalpropertymanagement-analysistable"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.DateFilter": [
+    "widget.totalpropertymanagement-datefilter"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.DiaryBill": [
+    "widget.totalpropertymanagement-diarybill"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.FinanceAggregation": [
+    "widget.totalpropertymanagement-financeaggregation"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.FinanceAnalysis": [
+    "widget.totalpropertymanagement-financeanalysis"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.Index": [
+    "widget.totalpropertymanagement-index"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.MonthlyBillDetail": [
+    "widget.totalpropertymanagement-MonthlyBillDetail"
+  ],
+  "FamilyDecoration.view.totalpropertymanagement.PieChart": [
+    "widget.totalpropertymanagement-piechart"
   ],
   "FamilyDecoration.view.user.Index": [
     "widget.user-index"

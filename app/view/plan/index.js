@@ -6,6 +6,7 @@ Ext.define('FamilyDecoration.view.plan.Index', {
 		'FamilyDecoration.store.PlanCategory', 'FamilyDecoration.view.plan.EditPlan', 'FamilyDecoration.view.progress.ProjectListByCaptain'
 	],
 	layout: 'border',
+	loadAll: true,
 
 	initComponent: function (){
 		var me = this;
@@ -21,16 +22,9 @@ Ext.define('FamilyDecoration.view.plan.Index', {
 				title: '工程项目名称',
 				id: 'treepanel-projectNameForPlan',
 				name: 'treepanel-projectNameForPlan',
+				loadAll: me.loadAll,
 				autoScroll: true,
 				listeners: {
-					itemclick: function (view, rec){
-						if (rec.get('projectName')) {
-							
-						}
-						else {
-							return false;
-						}
-					},
 					selectionchange: function (selModel, sels, opts){
 						var rec = sels[0],
 							addPlanBtn = Ext.getCmp('button-addplan'),
@@ -283,7 +277,9 @@ Ext.define('FamilyDecoration.view.plan.Index', {
 							pid: sel.getId()
 						};
 
-						changeMainCt('progress-index');
+						changeMainCt('progress-index', {
+							loadAll: false
+						});
 					}
 					else {
 						showMsg('请选择工程！');

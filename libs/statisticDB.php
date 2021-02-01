@@ -5,7 +5,7 @@
 		global $mysql;
         $res= array();
 
-		$whereSql = " where `name` in (select `userName` from `log_list`) ";
+		$whereSql = " where `name` in (select `committer` from `log_list`) ";
 		$orderBy = " ORDER BY `user`.`level` ASC ";
 		$arr = $mysql->DBGetSomeRows("`user`", " DISTINCT `level` ",$whereSql ,$orderBy);
 		foreach($arr as $key => $val) {
@@ -69,7 +69,7 @@
         $res= array("log"=>array(), "business"=>array(), "signedBusiness"=>array(), "potentialBusiness"=>array());
 
         // log list
-        $whereSql = "where isDeleted = 'false' and year(createTime) = '$year' and month(createTime) = '$month' and userName = '$user' GROUP BY day(`createTime`) ORDER BY day(`createTime`) ";
+        $whereSql = "where isDeleted = 'false' and year(createTime) = '$year' and month(createTime) = '$month' and committer = '$user' GROUP BY day(`createTime`) ORDER BY day(`createTime`) ";
         $logArr = $mysql->DBGetSomeRows("`log_list`", "*, day(createTime) AS `day`, count(*) AS `logListDailyAmount` ", $whereSql);
 
         // business

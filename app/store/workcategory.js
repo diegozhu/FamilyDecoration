@@ -4,8 +4,12 @@ Ext.define('FamilyDecoration.store.WorkCategory', {
 
 	data: [
 		{
-			name: '泥工',
+			name: '贴砖泥工',
 			value: '0001'
+		},
+		{
+			name: '基础泥工',
+			value: '0006'
 		},
 		{
 			name: '木工',
@@ -20,8 +24,12 @@ Ext.define('FamilyDecoration.store.WorkCategory', {
 			value: '0004'
 		},
 		{
-			name: '杂工',
+			name: '力工',
 			value: '0005'
+		},
+		{
+			name: '其他',
+			value: '0009'
 		}
 	],
 
@@ -36,9 +44,13 @@ Ext.define('FamilyDecoration.store.WorkCategory', {
 
 	renderer: function (val){
 		var arr = this.data.items,
-			res = '其他';
+			res = '';
 		for (var i = 0; i < arr.length; i++) {
-			if (arr[i].get('value') == val) {
+			if (val == '小计' || val == '总计') {
+				res = val;
+				break;
+			}
+			else if (arr[i].get('value') == val) {
 				res = arr[i].get('name');
 				break;
 			}

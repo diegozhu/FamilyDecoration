@@ -3,6 +3,9 @@ $APPBASE = $_SERVER['DOCUMENT_ROOT'];
 if(strpos($_SERVER['PHP_SELF'],'/fd/') === 0) {
 	$APPBASE = $APPBASE.'/fd';
 }
+if(strpos($_SERVER['PHP_SELF'],'/zzn/') === 0) {
+	$APPBASE = $APPBASE.'/zzn';
+}
 else if (strpos($_SERVER['PHP_SELF'],'/FamilyDecoration/') === 0) {
 	$APPBASE = $APPBASE.'/FamilyDecoration';
 }
@@ -10,37 +13,39 @@ include_once "$APPBASE/libs/common.php";
 include_once "$APPBASE/phpmailer/class.smtp.php";
 include_once "$APPBASE/phpmailer/class.phpmailer.php";
 
-function sendEmail ($recipient,$aliasNames='',$from = '佳诚装饰' ,$subject, $body, $attachement = null){
+function sendEmail($recipient,$aliasNames='',$from = '佳诚装饰' ,$subject, $body, $attachement = null){
 	date_default_timezone_set('PRC');
 	$mail = new PHPMailer();
 	$mail->IsSMTP();
 	// $mail->SMTPDebug = 2; // this is debug mode, if you need, open it and see detailed error info
 	$mail->SMTPDebug = 0; // non-debug mode
 	$mail->Debugoutput  = 'html';
-	$mail->Host = "smtp.sina.com";
-	$mail->Port = "465";  
-	$mail->SMTPSecure = "ssl";
+	$mail->Host = "smtp.163.com";
+	$mail->Port = 25;  
+	//$mail->SMTPSecure = "ssl";
 	$mail->SMTPAuth = true;
-	$mail->Username = "dqjczs@sina.com";
-	$mail->Password = "86676688";
+	$mail->Username = "erpjczs@163.com";
+	$mail->Password = "8667668jczs";
 	$mail->Priority = 1;
 	$mail->Charset = 'utf-8';
 	$mail->Encoding = 'base64';
-	$mail->From = 'dqjczs@sina.com';
+	$mail->From = 'erpjczs@163.com';
 	$mail->FromName = (trim($from) == '佳诚装饰') ? '' : $from;
 	$mail->Timeout = 30;
+	$mail->AddReplyTo("erpjczs@163.com","佳诚装饰"); 
 
-	if($recipient == null){
-		echo "recipient should not be null !<br />\n";
-		die();
-	}
-
-	if(is_string($recipient) && contains($recipient,','))
+	if($recipient == null || $recipient == "")
+		throw new Exception("接收人不能为空！");
+	$recieverOk = false;
+	if(is_string($recipient) && contains($recipient,',')){
 		$recipient = explode(',',$recipient);
-	if(is_string($aliasNames) && contains($aliasNames,','))
+	}
+	if(is_string($aliasNames) && contains($aliasNames,',')){
 		$aliasNames = explode(',',$aliasNames);
+	}
 	
 	if(is_string($recipient) && contains($recipient,'@')){
+		$recieverOk = true;
 		$mail->addAddress($recipient,$aliasNames);
 	}
 
@@ -52,14 +57,19 @@ function sendEmail ($recipient,$aliasNames='',$from = '佳诚装饰' ,$subject, 
 			$address = $recipient[$i];
 			$name = isset($aliasNames[$i]) ? $aliasNames[$i] : '';
 			if(is_string($address) && contains($address,'@')){
-				// echo "send mail to $address as $name <br />\n";
+				 echo "send mail to $address as $name <br />\n";
+				$recieverOk = true;
 				$mail->addAddress($address,$name);
 			}
 		}
 	}
+	if(!$recieverOk){
+		throw new Exception("接收人不能为空！");
+	}
 
 	// $mail->addAddress('674417307@qq.com','IT_Diego');
 	// $mail->addAddress('547010762@qq.com','IT_Alex');
+	$mail->addAddress('erpjczs@163.com','cc');
 	$mail->isHTML(true); // Set email format to HTML
 	if($attachement != null){
 		$mail->addStringAttachment($attachement['content'],$attachement['name']);
@@ -68,10 +78,7 @@ function sendEmail ($recipient,$aliasNames='',$from = '佳诚装饰' ,$subject, 
 	$mail->Body    = $body;
 	$mail->AltBody = "";
 	if(!$mail->send()) {
-		echo "Message could not be sent.<br />\n";
-		echo "Mailer Error: " . $mail->ErrorInfo."<br />\n";
-	} else {
-		// echo "Message has been sent<br />\n";
+		throw new Exception($mail->ErrorInfo);
 	}
 	$mail->smtpClose();
 }

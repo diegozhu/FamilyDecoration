@@ -43,15 +43,15 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 				}
 			}, {
 				text: '姓名',
-				flex: 1,
+				flex: 0.5,
 				dataIndex: 'realname'
 			}, {
 				text: '账号',
-				flex: 1,
+				flex: 0.6,
 				dataIndex: 'name'
 			}, {
 				text: '等级',
-				flex: 1,
+				flex: 0.5,
 				dataIndex: 'level',
 				renderer: function (val, meta, rec){
 					if (rec.get('name')) {
@@ -67,22 +67,50 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 				dataIndex: 'phone'
 			}, {
 				text: '邮箱',
-				flex: 1.3,
+				flex: 1,
 				dataIndex: 'mail'
 			}, {
 				text: '项目',
 				flex: 1,
 				dataIndex: 'projectName'
 			}, {
+				text: '供应商',
+				flex: 1,
+				dataIndex: 'supplierName'
+			}, {
 				text: '照片',
-				flex: 0.6,
+				flex: 0.3,
 				dataIndex: 'profileImage',
-				renderer: function (val){
-					if (val) {
-						return '<img src="' + val + '" width="30" height="30" />';
+				renderer: function (val, meta, rec){
+					if (rec.get('name')) {
+						return val ? '<img src="' + val + '" width="30" height="30" />' : '无';
 					}
 					else {
-						return '未上传';
+						return '';
+					}
+				}
+			}, {
+				text: '锁定',
+				flex: 0.3,
+				dataIndex: 'isLocked',
+				renderer: function(val, meta, rec) {
+					if (rec.get('name')) {
+						return val === 'true' ? '<font color="red">是</font>' : '否';
+					}
+					else {
+						return '';
+					}
+				}
+			}, {
+				text: '工资',
+				flex: 0.3,
+				dataIndex: 'isInStaffSalary',
+				renderer: function (val, meta, rec){
+					if (rec.get('name')) {
+						return val === 'true' ? '<font color="green">是</font>' : '<font color="red">否</font>';
+					}
+					else {
+						return '';
 					}
 				}
 			}],
@@ -141,6 +169,7 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 				{
 					text: '添加账号',
 					icon: './resources/img/add4.png',
+					hidden: User.isAdmin() || User.isBusinessStaff() || User.isAdministrationManager() ? false : true,
 					handler: function (){
 						var win = Ext.create('FamilyDecoration.view.setting.AddAccount', {
 							treepanel: me.down('treepanel')
@@ -152,7 +181,7 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 				{
 					text: '修改账号',
 					icon: './resources/img/edit1.png',
-					hidden: User.isAdmin() || User.isBusinessStaff() || User.isAdministrationManager() ? false : true,
+					hidden: !User.isGeneral() ? false : true,
 					name: 'button-editaccount',
 					id: 'button-editaccount',
 					disabled: true,
@@ -293,6 +322,43 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 					}
 				},
 				{
+					text: '锁定账号',
+					hidden: User.isAdmin() ? false : true,
+					name: 'button-lockAccount',
+					id: 'button-lockAccount',
+					icon: 'resources/img/lock2.png',
+					handler: function (){
+						var treepanel = me.down('treepanel'),
+							rec = treepanel.getSelectionModel().getSelection()[0];
+						Ext.Msg.warning('确定要锁定当前用户账号吗？一经锁定，该账号关联的业务将会被重置！', function (btnId){
+							if ('yes' == btnId) {
+								Ext.Ajax.request({
+									url: './libs/user.php?action=modify',
+									method: 'POST',
+									params: {
+										name: rec.get('name'),
+										level: rec.get('level'),
+										realname: rec.get('realname'),
+										isLocked: 1
+									},
+									callback: function (opts, success, res){
+										if (success) {
+											var obj = Ext.decode(res.responseText);
+											if ('successful' == obj.status) {
+												showMsg('账号锁定成功!');
+												me.down('treepanel').refresh();
+											}
+											else {
+												showMsg(obj.errMsg);
+											}
+										}
+									}
+								})
+							}
+						});
+					}
+				},
+				{
 					text: '优先级配置',
 					hidden: User.isAdmin() ? false : true,
 					icon: './resources/img/priority.png',
@@ -302,6 +368,40 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 						var win = Ext.create('FamilyDecoration.view.setting.UserList');
 						win.show();
 					}
+				},
+				{
+					text: '工资系统配置',
+					hidden: !User.isAdmin(),
+					icon: './resources/img/salary_permission_setting.png',
+					name: 'button-excludeFromStaffSalaryModule',
+					id: 'button-excludeFromStaffSalaryModule',
+					handler: function (){
+						var treepanel = me.down('treepanel'),
+							rec = treepanel.getSelectionModel().getSelection()[0];
+						Ext.Msg.warning('确定要对当前员工工资系统权限进行配置切换？', function (btnId){
+							if ('yes' == btnId) {
+								Ext.Ajax.request({
+									url: './libs/user.php?action=setStaffSalaryPermission',
+									method: 'POST',
+									params: {
+										name: rec.get('name')
+									},
+									callback: function (opts, success, res){
+										if (success) {
+											var obj = Ext.decode(res.responseText);
+											if ('successful' == obj.status) {
+												showMsg('设置成功!');
+												me.down('treepanel').refresh();
+											}
+											else {
+												showMsg(obj.errMsg);
+											}
+										}
+									}
+								})
+							}
+						});
+					}
 				}
 			],
 			listeners: {
@@ -310,19 +410,48 @@ Ext.define('FamilyDecoration.view.setting.Index', {
 						edit = Ext.getCmp('button-editaccount'),
 						reset = Ext.getCmp('button-resetaccount'),
 						del = Ext.getCmp('button-deleteaccount'),
-						upload = Ext.getCmp('button-uploadProfileImage');
+						upload = Ext.getCmp('button-uploadProfileImage'),
+						lockAccount = Ext.getCmp('button-lockAccount'),
+						excludeSalary = Ext.getCmp('button-excludeFromStaffSalaryModule');
 
 					if (rec && rec.get('name')) {
 						edit.enable();
 						reset.enable();
 						upload.enable();
 						del.setDisabled(rec.get('level') == 1);
+						lockAccount.enable();
+						excludeSalary.enable();
 					}
 					else {
 						edit.disable();
 						reset.disable();
 						del.disable();
 						upload.disable();
+						lockAccount.disable();
+						excludeSalary.disable();
+					}
+				},
+				cellclick: function (view, td, cellIndex, rec, tr, rowIndex, ev, opts){
+					var treepanel = me.down('treepanel'),
+						headerCt = treepanel.down('headercontainer')
+						header = headerCt.getHeaderAtIndex(cellIndex),
+						dataIndex = header.dataIndex;
+					if (rec && rec.get('name') && dataIndex == 'profileImage') {
+						var win = Ext.create('Ext.window.Window', {
+							layout: 'fit',
+							width: 500,
+							height: 400,
+							maximizable: true,
+							modal: true,
+							title: '帐户照片',
+							items: [
+								{
+									xtype: 'image',
+									src: rec.get('profileImage')
+								}
+							]
+						});
+						win.show();
 					}
 				}
 			}

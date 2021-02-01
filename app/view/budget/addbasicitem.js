@@ -14,9 +14,12 @@ Ext.define('FamilyDecoration.view.budget.AddBasicItem', {
 
 	grid: null, // 预算表格
 	budgetId: undefined, // 预算id
+	insertBeforeItemCode: null,
 
 	initComponent: function () {
 		var me = this;
+
+		me.insertBeforeItemCode && me.setTitle(me.title + ' <font color="orange">[插入到大项' + me.insertBeforeItemCode + '之前]</font>');
 
 		me.buttons = [
 			{
@@ -37,7 +40,8 @@ Ext.define('FamilyDecoration.view.budget.AddBasicItem', {
 								data.push({
 									itemName: txt == '' ? mainRec.get('itemName') : txt,
 									budgetId: me.budgetId,
-									basicItemId: mainRec.getId()
+									basicItemId: mainRec.getId(),
+									insertBefore: me.insertBeforeItemCode
 								});
 								for (var i = 0; i < subRecs.length; i++) {
 									data.push({
@@ -113,6 +117,14 @@ Ext.define('FamilyDecoration.view.budget.AddBasicItem', {
 															me.grid.getStore().load({
 																params: {
 																	budgetId: me.budgetId
+																},
+																callback: function (recs, ope, success){
+																	if (success) {
+																		var index = me.grid.getStore().find('itemCode', obj.itemCode),
+																			rec = me.grid.getStore().getAt(index);
+																		me.grid.getView().focusRow(rec, 200);
+																		me.grid.getSelectionModel().select(rec);
+																	}
 																}
 															});
 															me.close();
@@ -167,6 +179,14 @@ Ext.define('FamilyDecoration.view.budget.AddBasicItem', {
 														me.grid.getStore().load({
 															params: {
 																budgetId: me.budgetId
+															},
+															callback: function (recs, ope, success){
+																if (success) {
+																	var index = me.grid.getStore().find('itemCode', obj.itemCode),
+																		rec = me.grid.getStore().getAt(index);
+																	me.grid.getView().focusRow(rec, 200);
+																	me.grid.getSelectionModel().select(rec);
+																}
 															}
 														});
 														me.close();

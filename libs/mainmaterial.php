@@ -16,11 +16,17 @@
 		case "editMaterial":
 			$res = editMaterial($_POST);
 			break;
+		case "checkMaterial":
+			$res = checkMaterial($_POST);
+			break;
 		case "getMaterials":
 			$res = getMaterials($_REQUEST["id"]);
 			break;
 		case "getMaterialsByProjectId":
 			$res = getMaterialsByProjectId($_REQUEST["projectId"]);
+			break;
+		case "getMaterialType":
+			$res = getMaterialType();
 			break;
 		default: 
 			throw new Exception("unknown action:".$action);

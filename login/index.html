@@ -9,6 +9,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	
 <head>
 	<title>佳诚装饰</title>
+		<script>
+			if(location.href.indexOf('http://') != -1 && location.href.indexOf('localhost') == -1 && location.href.indexOf('127.0.0.1') == -1) {
+				location.href = location.href.replace('http://','https://');
+			}
+		</script>
 		<link href="./favicon.ico" type="image/x-icon" rel="shortcut icon" /> 
 		<meta charset="utf-8">
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -20,6 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!--//webfonts-->
 		<script type="text/javascript" src="../tools/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="../tools/sweetalert/dist/sweetalert.min.js"></script>
+		<script type="text/javascript" src="../tools/md5.min.js"></script>
 </head>
 <body>
 	
@@ -50,6 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				<!-----//end-copyright---->
 	<script type="text/javascript">
+		var _PWDPREFIX = 'familydecoration-';
 		$(function (){
 			// function hideURLbar () {
 			// 	window.scrollTo(0,1);
@@ -70,7 +77,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					dataType: 'json',
 					data: {
 						name: name,
-						password: password
+						password: md5(_PWDPREFIX + password)
 					}
 				})
 				.done(function (res, status){

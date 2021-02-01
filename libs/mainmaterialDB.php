@@ -1,19 +1,39 @@
 <?php
 
+	function getMaterialType(){
+		$res = array();
+		array_push($res,array('id'=>'c3','value'=>'厨房橱柜、电器'));
+		array_push($res,array('id'=>'c4','value'=>'卫生间卫浴、洁具'));
+		array_push($res,array('id'=>'c5','value'=>'空调及供热系统'));
+		array_push($res,array('id'=>'c9','value'=>'地砖及石材预定'));
+		array_push($res,array('id'=>'c13','value'=>'客厅、卧室家具'));
+		array_push($res,array('id'=>'c21','value'=>'成品门、门窗套预定'));
+		array_push($res,array('id'=>'c24','value'=>'窗帘、墙纸、灯具、木地板'));
+		return $res;
+	}
 	function addMaterial($post){
 		$projectId = $post["projectId"];
 		$obj = array(
 			"id"=>date("YmdHis").str_pad(rand(0, 9999), 4, rand(0, 9), STR_PAD_LEFT),
 			"projectId"=>$projectId,
 			"productName" => $post["productName"],
+			"materialType" => $post["materialType"],
 			"productType" => $post["productType"],
 			"productNumber" => $post["productNumber"],
 			"productMerchant" => $post["productMerchant"],
 			"productSchedule" => $post["productSchedule"],
 			"productDeliver" => $post["productDeliver"]
 		);
+		if(isset($post["isChecked"]))
+			$obj["isChecked"] = $post["isChecked"];
 		global $mysql;
 		$mysql->DBInsertAsArray("`mainmaterial`",$obj);
+		//添加计划进度
+		$projectProgressSvc = BaseSvc::getSvc('ProjectProgress');
+		$progress = array('@columnName'=>$post['materialType']);
+		$progress['@projectId'] = $post['projectId'];
+		$progress['@content'] = '已订购'.$post["productName"].'(数量:'.$post["productNumber"].')';
+		$projectProgressSvc->add($progress);
 		return array('status'=>'successful', 'errMsg' => '','materialId'=> $obj["id"]);
 	}
 
@@ -44,6 +64,8 @@
 			$res[$count]["productMerchant"] = $val["productMerchant"];
 			$res[$count]["productSchedule"] = $val["productSchedule"];
 			$res[$count]["productDeliver"] = $val["productDeliver"];
+			$res[$count]["materialType"] = $val["materialType"];
+			$res[$count]["isChecked"] = $val["isChecked"];
 			$res[$count]["isDeleted"] = $val["isDeleted"];
 		    $count ++;
         }
@@ -65,7 +87,9 @@
 			$res[$count]["productMerchant"] = $val["productMerchant"];
 			$res[$count]["productSchedule"] = $val["productSchedule"];
 			$res[$count]["productDeliver"] = $val["productDeliver"];
+			$res[$count]["isChecked"] = $val["isChecked"];
 			$res[$count]["isDeleted"] = $val["isDeleted"];
+			$res[$count]["materialType"] = $val["materialType"];
 		    $count ++;
         }
 		return $res;
@@ -81,7 +105,24 @@
 		$obj['productDeliver'] = $data['productDeliver'];
 		$obj['productMerchant'] = $data['productMerchant'];
 		$obj['productSchedule'] = $data['productSchedule'];
+		$obj['materialType'] = $data['materialType'];
+		if(isset($data['isChecked']))
+			$obj['isChecked'] = $data['isChecked'];
 		$mysql->DBUpdate("`mainmaterial`",$obj,"`id` = '?' ",array($data["id"]));
+		return array('status'=>'successful', 'errMsg' => 'edit mainmaterial ok');
+	}
+
+	function checkMaterial ($data) {
+		global $mysql;
+		$obj= array();
+		$obj['isChecked'] = $data['isChecked'];
+		$mysql->DBUpdate("`mainmaterial`",$obj,"`id` = '?' ",array($data["id"]));
+		//添加计划进度
+		$projectProgressSvc = BaseSvc::getSvc('ProjectProgress');
+		$progress = array('@columnName'=>$data['materialType']);
+		$progress['@projectId'] = $data['projectId'];
+		$progress['@content'] = $data["productName"].'已确定订购';
+		$projectProgressSvc->add($progress);
 		return array('status'=>'successful', 'errMsg' => 'edit mainmaterial ok');
 	}
 ?>

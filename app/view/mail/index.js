@@ -4,7 +4,7 @@ Ext.define('FamilyDecoration.view.mail.Index', {
 	requires: [
 		'FamilyDecoration.view.checklog.MemberList',
 		'FamilyDecoration.store.Mail',
-		'FamilyDecoration.view.mail.NewMail',
+		'FamilyDecoration.view.mail.NewMail'
 	],
 	layout: {
 		type: 'hbox',
@@ -150,7 +150,7 @@ Ext.define('FamilyDecoration.view.mail.Index', {
 										url: './libs/mail.php?action=setmailread',
 										method: 'POST',
 										params: {
-											mailId: rec.getId()
+											id: rec.getId()
 										},
 										callback: function(opts, success, res) {
 											if (success) {
@@ -214,7 +214,7 @@ Ext.define('FamilyDecoration.view.mail.Index', {
 										url: './libs/mail.php?action=setmailread',
 										method: 'POST',
 										params: {
-											mailId: rec.getId()
+											id: rec.getId()
 										},
 										callback: function(opts, success, res) {
 											if (success) {
@@ -249,8 +249,23 @@ Ext.define('FamilyDecoration.view.mail.Index', {
 						dataIndex: 'mailSubject',
 						flex: 4
 					}, {
+						text: '状态',
+						dataIndex: 'status',
+						flex: 1,
+						renderer: function(v) {
+							if(v==100)
+								return '发送成功';
+							if(v==0)
+								return '未发送';
+							return '发送失败'+v+'次';
+						}
+					}, {
+						text: '结果',
+						dataIndex: 'result',
+						flex: 2
+					}, {
 						text: '时间',
-						dataIndex: 'mailTime',
+						dataIndex: 'createTime',
 						flex: 2
 					}],
 					autoScroll: true,
@@ -332,8 +347,23 @@ Ext.define('FamilyDecoration.view.mail.Index', {
 						dataIndex: 'mailSubject',
 						flex: 4
 					}, {
+						text: '状态',
+						dataIndex: 'status',
+						flex: 1,
+						renderer: function(v) {
+							if(v==100)
+								return '发送成功';
+							if(v==0)
+								return '未发送';
+							return '发送失败'+v+'次';
+						}
+					}, {
+						text: '结果',
+						dataIndex: 'result',
+						flex: 2
+					}, {
 						text: '时间',
-						dataIndex: 'mailTime',
+						dataIndex: 'createTime',
 						flex: 2
 					}],
 					autoScroll: true,

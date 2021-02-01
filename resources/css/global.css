@@ -38,7 +38,7 @@ table.pros td{
 	margin: 0 4px 0 0;
 }
 
-#checkFeedback, #analysisChart {
+#checkFeedback, #analysisChart, #logAndException {
   float: right;
   margin-right: 2px;
 }
@@ -59,13 +59,26 @@ table.pros td{
 #gridpanel-message .x-grid-cell-inner, #gridpanel-mainMaterialContent .x-grid-cell-inner, 
 .gridpanel-budgetContent .x-grid-cell-inner, #gridpanel-msgreport .x-grid-cell-inner,
 #gridpanel-businessInfoForSignBusiness .x-grid-cell-inner, #gridpanel-buildingMgm .x-grid-cell-inner,
-#gridpanel-clientInfo .x-grid-cell-inner, .gridpanel-announcementComment .x-grid-cell-inner {
+#gridpanel-clientInfo .x-grid-cell-inner, .gridpanel-announcementComment .x-grid-cell-inner,
+#gridpanel-projectcategory .x-grid-cell-inner, #gridpanel-projectProgressForProjectProgress .x-grid-cell-inner,
+.gridpanel-editprogress .x-grid-cell-inner, #gridpanel-detailedAddressForSignBusiness .x-grid-cell-inner,
+#gridpanel-buildingMgm .x-grid-cell-inner, .gridpanel-editstatus .x-grid-cell-inner,
+.gridpanel-waitingList .x-grid-cell-inner, .gridpanel-potentialBusinessList .x-grid-cell-inner,
+.gridpanel-errorandexception .x-grid-cell-inner, .gridpanel-logContent .x-grid-cell-inner,
+.gridpanel-entrynexitboard .x-grid-cell-inner, .gridpanel-requestGrid .x-grid-cell-inner,
+.gridpanel-historyGrid .x-grid-cell-inner, .gridpanel-qgdList .x-grid-cell-inner,
+.gridpanel-editbillitemremark .x-grid-cell-inner, .gridpanel-materialorderlist .x-grid-cell-inner,
+.gridpanel-paymentbillcheck .x-grid-cell-inner {
   white-space: normal;
   word-wrap: break-word;
 }
 
 #gridpanel-receivedBox .x-grid-cell-inner, #gridpanel-sentBox .x-grid-cell-inner {
   cursor: pointer;
+}
+
+#gridpanel-projectProgressForProjectProgress .x-grid-cell-inner img {
+    cursor: pointer;
 }
 
 #chartContainer {
@@ -97,6 +110,42 @@ table.pros td{
   cursor: auto;
     background-image: url("../img/multiple-receiver-mail.png");
 }
+
+/* entry and exit module class */
+
+tr.bill-paid .x-grid-td {
+    /*background-color: lightyellow;*/
+}
+
+tr.bill-unpaid .x-grid-td {
+    background-color: lightblue;
+}
+
+/* end of entry and exit module class */
+
+/* project finance management module class */
+tr.bill-money-exceptional .x-grid-td {
+    background-color: lightyellow;
+}
+tr.bill-reality-greater-than-budget .x-grid-td {
+    background-color: orangered;
+}
+/* end of project finance management module class */
+
+/* businesstotransfer module class */
+tr.business-locked .x-grid-td {
+    background-color: lightcoral;
+}
+/* end of businesstotransfer module class */
+
+/* tasktable module class */
+tr.priority-emergency .x-grid-td {
+    background-color: mediumpurple;
+}
+tr.priority-general .x-grid-td {
+    background-color: sandybrown;
+}
+/* end of tasktable module class */
 
 @-webkit-keyframes blink {
     0% {
@@ -163,6 +212,16 @@ table.pros td{
 
 .visibilityHidden {
   visibility: hidden;
+}
+
+.footnote {
+    font-size: 9px;
+    color: #009688;
+    text-align:right;
+}
+
+.dhtmlx_message_area {
+    z-index: 99999999;
 }
 
 /*html { 

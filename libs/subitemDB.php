@@ -11,6 +11,19 @@
 		}
 	}
 
+	function getItemsByWorkCategory ($workCategory){
+		global $mysql;
+		return $mysql->DBGetSomeRows("`basic_sub_item`", "*", "where `workCategory` = '".$workCategory."'");
+	}
+
+	function getSortedItems ($parentId){
+		global $mysql;
+		$currentItemCluster = $mysql->DBGetSomeRows("`basic_sub_item`", "*", "where `parentId` = '".$_GET["parentId"]."'");	
+		$otherItemCluster = $mysql->DBGetSomeRows("`basic_sub_item`", "*", "where `parentId` != '".$_GET["parentId"]."' ORDER BY parentId ");
+		$res = array_merge($currentItemCluster, $otherItemCluster);
+		return $res;
+	}
+
 	function addBunchBasicSubItems ($subItem){
 		$count = count(explode(">>><<<", $subItem["subItemName"]));
 	
@@ -74,15 +87,13 @@
 		global $mysql;
 		$arr = explode(">>><<<", $itemId);
 		for ($i = 0; $i < count($arr); $i++) {
-			$condition = "`subItemId` = '".$arr[$i]."'";
-			$mysql->DBDelete("`basic_sub_item`", $condition);
+			$mysql->DBExecute("delete from `basic_sub_item` where `subItemId` = '".$arr[$i]."'");
 		}
 	}
 
 	function deleteBasicSubItemByParentId ($parentId){
 		global $mysql;
-		$condition = "`parentId` = '".$parentId."'";
-		$mysql->DBDelete("`basic_sub_item`", $condition);
+		$mysql->DBExecute("delete from `basic_sub_item` where `parentId` = '".$parentId."'");
 	}
 
 	function editBasicSubItem (array $item){
